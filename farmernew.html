@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><title>Seller Dashboard - FarmerCart Owner Only</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Owner Dashboard</span></div><button class="head-btn" onclick="location.href='crop.html'">+ Add Product</button><button class="head-btn" onclick="location.href='index.html'">Home</button></header>
+<main>
+<h2>Seller Dashboard - Only Owner</h2>
+<p style="color:#d32f2f;font-weight:700">⚠️ This page is only for Owner. If you are not the owner, please go back. There is no other seller, only FarmerCart.</p><br>
+<div class="card"><h3>Today Summary</h3><p>Total Products: <b id="totalP">0</b> | Total Orders: <b id="totalO">0</b> | Total Sale: <b id="totalE">₹0</b> | Pending: <b id="pending">0</b></p><p>Owner: <b>FarmerCart</b> | All orders come directly to owner</p></div>
+<h3>📦 New Orders - Confirm These Orders</h3>
+<div id="sellerOrders"></div>
+<h3>📦 My Products - FarmerCart Products</h3>
+<div id="myProducts"></div>
+</main>
+<script>
+let user=localStorage.getItem('fc_user');
+if(user && user!='owner'){alert('Access Denied! Seller is only Owner. You are a Buyer.'); location.href='index.html';}
+let orders=JSON.parse(localStorage.getItem('fc_orders')||'[]');
+let products=JSON.parse(localStorage.getItem('fc_products')||'[]');
+document.getElementById('totalP').innerText=products.length;
+document.getElementById('totalO').innerText=orders.length;
+document.getElementById('totalE').innerText='₹'+orders.reduce((s,o)=>s+o.total,0);
+document.getElementById('pending').innerText=orders.filter(o=>o.status!='Delivered').length;
+let box=document.getElementById('sellerOrders');
+if(orders.length==0) box.innerHTML='<div class="card">No orders yet. Add products.</div>';
+else box.innerHTML=orders.map((o,i)=>`<div class="card"><h4>Order ID: ${o.id} | Buyer: ${o.name} | Phone: ${o.phone}</h4><p>Address: ${o.addr}, ${o.city} - ${o.pin} | Payment: ${o.pay} | Total: ₹${o.total} | Status: <b>${o.status}</b></p><p>Items: ${o.items.map(x=>x.name+' '+x.qty+'x').join(', ')}</p><label>Update Status (Buyer will see in My Orders):</label><select onchange="updateStatus(${i},this.value)"><option ${o.status=='Ordered'?'selected':''}>Ordered</option><option ${o.status=='Packed'?'selected':''}>Packed</option><option ${o.status=='Shipped'?'selected':''}>Shipped</option><option ${o.status=='Out for Delivery'?'selected':''}>Out for Delivery</option><option ${o.status=='Delivered'?'selected':''}>Delivered</option></select><br><br><button class="btn-blue" onclick="alert('Call buyer on '+ '${o.phone}')">📞 Contact Buyer - ${o.phone}</button></div>`).join('');
+function updateStatus(i,val){let orders=JSON.parse(localStorage.getItem('fc_orders')||'[]'); orders[i].status=val; localStorage.setItem('fc_orders',JSON.stringify(orders)); alert('Status updated to '+val+'! Buyer will see it in My Orders.'); location.reload();}
+document.getElementById('myProducts').innerHTML=products.map(p=>`<div class="card"><b>${p.emoji} ${p.name}</b> - ₹${p.price} | Category: ${p.cat} | Stock: ${p.stock}</div>`).join('');
+</script>
+<footer><b>FarmerCart Owner Only</b></footer>
+</body></html>

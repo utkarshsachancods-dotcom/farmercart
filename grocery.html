@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html><head><title>Grocery - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Fresh • Seeds • Fertilizer ★</span></div><div class="search-box"><input id="s" placeholder="Search Atta, Rice, Dal, Oil..." onkeyup="render()"><button onclick="render()">🔍</button></div><select class="lang-small"><option>🌐 EN</option><option>Hindi</option></select><button class="head-btn" onclick="location.href='login.html'">Login</button><button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cc">0</span>)</button></header>
+<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html" class="active">Grocery</a><a href="orders.html">My Orders</a></nav>
+<main>
+<div class="cat-hero"><h2>🛒 Grocery - Home Essentials</h2><p>Atta, Rice, Dal, Oil, Spices, Tea, Sugar - Everything in one place, Sealed Packing, At The Right Price. Buy monthly items together.</p><span>★ Seller Only: FarmerCart | Free Delivery Above ₹499</span></div>
+<div class="cat-stats"><div><b>18+</b> Grocery Items</div><div><b>4.6★</b> Avg Rating</div><div><b>4,000+</b> Orders</div><div><b>Sealed</b> Packing</div></div>
+<div class="cat-filter"><input placeholder="Search grocery..." onkeyup="document.getElementById('s').value=this.value;render()"><select id="sort" onchange="render()"><option value="">Sort: Popularity</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select><select id="price" onchange="render()"><option value="">All Prices</option><option value="0-200">Under ₹200</option><option value="200-500">₹200 - ₹500</option></select><button class="btn-blue" onclick="location.href='cart.html'">Go to Cart →</button></div>
+<div class="cat-grid" id="list"></div>
+<div class="section-title">🛒 Monthly List - Buy Together, Save Money</div>
+<div class="cat-info"><h3>1 Month Items - Family Pack</h3><p style="line-height:1.9;margin-top:8px"><b>Atta 10kg + Rice 10kg + Dal 3kg + Oil 2L + Sugar 2kg + Tea 500g = Around ₹1,800.</b><br>Buying separately costs more. Buying together gives FREE delivery.<br><b>Combo Offer:</b> Atta + Rice + Dal Combo gives ₹150 discount.<br><b>Expiry:</b> All items have expiry more than 6 months.</p></div>
+<div class="section-title">⭐ Reviews</div>
+<div class="cat-review"><b>Neha Singh ★★★★★</b><p>"Bought monthly items together. Atta was good, roti was soft. Delivery arrived in 2 days."</p></div>
+<div class="cat-review"><b>Anjali Sharma ★★★★★</b><p>"Basmati rice fragrance was very good. Rate was cheaper than shop."</p></div>
+<div class="section-title">❓ Grocery FAQs</div>
+<div class="cat-faq"><b>Q: What is expiry?</b><p>A: All items have expiry more than 6 months. Written on packet.</p></div>
+<div class="cat-faq"><b>Q: Discount on bulk?</b><p>A: Yes, for 10kg+ contact us for wholesale rate.</p></div>
+</main>
+<script>
+let all=[
+{id:501,name:'Atta - Whole Wheat 5kg',price:249,old:329,rating:'4.6',emoji:'🌾',stock:'In Stock',desc:'Soft roti, chakki ground',tag:'BESTSELLER'},
+{id:502,name:'Basmati Rice - 5kg',price:499,old:699,rating:'4.7',emoji:'🍚',stock:'In Stock',desc:'Long grain, fragrant',tag:'BESTSELLER'},
+{id:503,name:'Arhar Dal - 1kg',price:189,old:249,rating:'4.5',emoji:'🥘',stock:'In Stock',desc:'Yellow dal, cooks fast',tag:''},
+{id:504,name:'Mustard Oil - 1 Litre',price:199,old:259,rating:'4.6',emoji:'🫙',stock:'In Stock',desc:'Kacchi ghani, strong',tag:''},
+{id:505,name:'Chana Dal - 1kg',price:129,old:169,rating:'4.5',emoji:'🥘',stock:'In Stock',desc:'Desi chana dal',tag:''},
+{id:506,name:'Sugar - 2kg',price:99,old:129,rating:'4.5',emoji:'🍬',stock:'In Stock',desc:'White sugar, sweet',tag:''},
+{id:507,name:'Tea Powder - 250g',price:149,old:199,rating:'4.6',emoji:'🍵',stock:'In Stock',desc:'Strong tea, Assam',tag:''},
+{id:508,name:'Haldi + Masala Combo',price:299,old:399,rating:'4.7',emoji:'🧂',stock:'In Stock',desc:'Haldi, Chilli, Coriander combo',tag:'COMBO'},
+{id:509,name:'Atta - 10kg Family Pack',price:479,old:649,rating:'4.7',emoji:'🌾',stock:'In Stock',desc:'Big pack, cheaper',tag:'COMBO'},
+{id:510,name:'Rice - Sona Masoori 5kg',price:399,old:549,rating:'4.6',emoji:'🍚',stock:'In Stock',desc:'Daily rice',tag:''},
+{id:511,name:'Moong Dal - 1kg',price:169,old:229,rating:'4.5',emoji:'🥘',stock:'In Stock',desc:'Green moong dal',tag:''},
+{id:512,name:'Masoor Dal - 1kg',price:149,old:199,rating:'4.5',emoji:'🥘',stock:'In Stock',desc:'Red masoor',tag:''},
+{id:513,name:'Refined Oil - 1 Litre',price:149,old:189,rating:'4.4',emoji:'🫙',stock:'In Stock',desc:'Light oil, daily use',tag:''},
+{id:514,name:'Ghee - Desi 500ml',price:349,old:449,rating:'4.8',emoji:'🧈',stock:'In Stock',desc:'Desi ghee, fragrant',tag:'PREMIUM'},
+{id:515,name:'Salt - 1kg',price:29,old:39,rating:'4.5',emoji:'🧂',stock:'In Stock',desc:'Iodized salt',tag:''},
+{id:516,name:'Red Chilli Powder - 250g',price:129,old:179,rating:'4.6',emoji:'🌶️',stock:'In Stock',desc:'Spicy chilli',tag:''},
+{id:517,name:'Garam Masala - 100g',price:149,old:199,rating:'4.7',emoji:'🧂',stock:'In Stock',desc:'Home like taste',tag:''},
+{id:518,name:'Monthly Combo - Atta+Rice+Dal+Oil',price:1199,old:1699,rating:'4.8',emoji:'🎁',stock:'In Stock',desc:'Monthly combo, save ₹500',tag:'COMBO'}
+];
+function render(){let q=(document.getElementById('s').value||'').toLowerCase(); let sort=document.getElementById('sort').value; let pr=document.getElementById('price').value; let list=all.filter(p=>p.name.toLowerCase().includes(q) && (!pr || (pr=='0-200'&&p.price<=200) || (pr=='200-500'&&p.price>200))); if(sort=='low') list.sort((a,b)=>a.price-b.price); if(sort=='high') list.sort((a,b)=>b.price-a.price); document.getElementById('list').innerHTML=list.map(p=>{let off=Math.round((1-p.price/p.old)*100); return `<div class="cat-card">${p.tag?`<span class="tag">${p.tag}</span>`:''}<div class="cat-emoji">${p.emoji}</div><span class="cat-badge">Grocery • ${p.stock}</span><h4 style="margin:8px 0">${p.name}</h4><p class="cat-desc">${p.desc}</p><p><span class="p-rating">${p.rating} ★</span> 4,000+ Ratings</p><p class="p-price">₹${p.price} <span class="p-old">₹${p.old}</span> <span class="p-off">${off}% off</span></p><p class="p-delivery">FREE Delivery • COD Available</p><p class="phone-box">Seller: FarmerCart</p><br><button class="btn" onclick="add(${p.id})">ADD TO CART</button><button class="btn btn-buy" onclick="buy(${p.id})">BUY NOW</button></div>`}).join('');}
+function add(id){let cart=JSON.parse(localStorage.getItem('fc_cart')||'[]'); let p=all.find(x=>x.id==id); let ex=cart.find(x=>x.id==id); if(ex) ex.qty++; else cart.push({...p,cat:'Grocery',qty:1}); localStorage.setItem('fc_cart',JSON.stringify(cart)); document.getElementById('cc').innerText=cart.length; alert(p.name+' added to cart!');}
+function buy(id){add(id); location.href='cart.html';}
+render(); document.getElementById('cc').innerText=JSON.parse(localStorage.getItem('fc_cart')||'[]').length;
+</script>
+<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
+</body></html>

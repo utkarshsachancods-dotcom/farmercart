@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html><head><title>Pesticides - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Fresh • Seeds • Fertilizer ★</span></div><div class="search-box"><input id="s" placeholder="Search Pesticide - Neem, Insecticide..." onkeyup="render()"><button onclick="render()">🔍</button></div><select class="lang-small"><option>🌐 EN</option><option>Hindi</option></select><button class="head-btn" onclick="location.href='login.html'">Login</button><button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cc">0</span>)</button></header>
+<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html" class="active">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a><a href="orders.html">My Orders</a></nav>
+<main>
+<div class="cat-hero"><h2>🛡️ Pesticides - Crop Protection</h2><p>Complete protection for your crops. Neem Oil, Insecticide, Fungicide, Herbicide. Control insects, fungus, weeds and termites. Protect your crop and increase your yield.</p><span>★ Seller Only: FarmerCart | Free Delivery Above ₹499</span></div>
+<div class="cat-stats"><div><b>18+</b> Pesticides</div><div><b>4.5★</b> Average Rating</div><div><b>2,800+</b> Farmers Bought</div><div><b>Safe</b> & Tested</div></div>
+<div class="cat-filter"><input placeholder="Search pesticide..." onkeyup="document.getElementById('s').value=this.value;render()"><select id="sort" onchange="render()"><option value="">Sort: Popularity</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select><select id="price" onchange="render()"><option value="">All Prices</option><option value="0-300">Under ₹300</option><option value="300-600">₹300 - ₹600</option></select><button class="btn-blue" onclick="location.href='cart.html'">Go to Cart →</button></div>
+<div class="cat-grid" id="list"></div>
+<div class="section-title">🛡️ Pesticide Guide - Which Medicine For Which Problem?</div>
+<div class="cat-info"><h3>If Insects Have Attacked Your Crop?</h3><p style="line-height:1.9;margin-top:8px"><b>Green Caterpillar:</b> Imidacloprid or Neem Oil - 2ml per litre of water.<br><b>Aphid:</b> Dimethoate - Spray under the leaves.<br><b>Whitefly:</b> Acetamiprid - Spray early in the morning.<br><b>Fungus / Blight:</b> Saaf Fungicide - 2g per litre.<br><b>Weed:</b> Herbicide - Use before or after sowing, as written on the packet.<br><b>Termite:</b> Chlorpyrifos - Apply near the roots.</p></div>
+<div class="cat-info"><h3>⚠️ Safety - Very Important</h3><p style="line-height:1.9;margin-top:8px">1. Always wear a mask, gloves and glasses while spraying.<br>2. Do not spray in strong sunlight. Spray after 4 PM.<br>3. Do not spray against the wind.<br>4. After spraying, wash hands and face and change clothes.<br>5. Keep away from children and animals.<br>6. Do not harvest vegetables for 7 days after spraying.</p></div>
+<div class="section-title">⭐ Farmer Reviews</div>
+<div class="cat-review"><b>Priya Singh - Itaunja ★★★★★</b><p>"Bought Neem Oil, cabbage insects were gone in 2 days. It is organic, so I was not worried."</p></div>
+<div class="cat-review"><b>Vikash Yadav ★★★★☆</b><p>"Saaf Fungicide is very good. Tomato blight stopped completely."</p></div>
+<div class="section-title">❓ Pesticide FAQs</div>
+<div class="cat-faq"><b>Q: In how many days will the medicine work?</b><p>A: Insects will start dying in 2-3 days. Full effect in 7 days.</p></div>
+<div class="cat-faq"><b>Q: Do you have organic medicine?</b><p>A: Yes, Neem Oil and Bio Pesticide are 100% organic.</p></div>
+</main>
+<script>
+let all=[
+{id:301,name:'Neem Oil Pesticide - 1 Litre',price:299,old:449,rating:'4.6',emoji:'🛡️',stock:'In Stock',desc:'100% Organic, works on all insects',tag:'ORGANIC'},
+{id:302,name:'Insecticide - Imidacloprid 500ml',price:499,old:699,rating:'4.5',emoji:'🛡️',stock:'In Stock',desc:'Controls green caterpillar and aphid',tag:'BESTSELLER'},
+{id:303,name:'Fungicide - Saaf 500g',price:349,old:499,rating:'4.7',emoji:'🛡️',stock:'In Stock',desc:'Best for blight and fungus',tag:'BESTSELLER'},
+{id:304,name:'Herbicide - Weed Killer 1L',price:599,old:799,rating:'4.3',emoji:'🛡️',stock:'In Stock',desc:'Cleans weeds, safe for crop',tag:''},
+{id:305,name:'Termite Killer - 1 Litre',price:399,old:549,rating:'4.4',emoji:'🛡️',stock:'In Stock',desc:'Complete termite control',tag:''},
+{id:306,name:'Rat Killer - 500g',price:149,old:199,rating:'4.3',emoji:'🛡️',stock:'In Stock',desc:'Effective rat control',tag:''},
+{id:307,name:'Mosquito / Fly Spray - 1L',price:249,old:349,rating:'4.5',emoji:'🛡️',stock:'In Stock',desc:'For home and farm both',tag:''},
+{id:308,name:'Bio Pesticide - Organic 1L',price:449,old:599,rating:'4.6',emoji:'🌿',stock:'In Stock',desc:'100% Bio, safe for children',tag:'ORGANIC'},
+{id:309,name:'Dimethoate 30% - 500ml',price:329,old:449,rating:'4.5',emoji:'🛡️',stock:'In Stock',desc:'Best for aphid',tag:''},
+{id:310,name:'Acetamiprid - 250g',price:399,old:549,rating:'4.4',emoji:'🛡️',stock:'In Stock',desc:'Controls whitefly',tag:'NEW'},
+{id:311,name:'Chlorpyrifos - 1 Litre',price:499,old:649,rating:'4.5',emoji:'🛡️',stock:'In Stock',desc:'Termite + insect both',tag:''},
+{id:312,name:'Copper Oxychloride - 500g',price:299,old:399,rating:'4.6',emoji:'🛡️',stock:'In Stock',desc:'Traditional fungus medicine',tag:''},
+{id:313,name:'Mancozeb - 500g',price:279,old:379,rating:'4.5',emoji:'🛡️',stock:'In Stock',desc:'Potato and tomato blight',tag:''},
+{id:314,name:'Glyphosate - Weed Killer 1L',price:549,old:729,rating:'4.4',emoji:'🛡️',stock:'In Stock',desc:'Cleans even big weeds',tag:''},
+{id:315,name:'Spray Pump - 16L Battery',price:2499,old:3499,rating:'4.6',emoji:'🧰',stock:'In Stock',desc:'Battery pump, easy to use',tag:'COMBO'},
+{id:316,name:'Spray Pump - 16L Manual',price:1299,old:1799,rating:'4.5',emoji:'🧰',stock:'In Stock',desc:'Hand pump, low price',tag:''},
+{id:317,name:'Neem + Saaf Combo',price:599,old:899,rating:'4.7',emoji:'🎁',stock:'In Stock',desc:'Combo offer, save ₹300',tag:'COMBO'},
+{id:318,name:'All in One Kit - 4 Medicines',price:999,old:1499,rating:'4.8',emoji:'🎁',stock:'In Stock',desc:'Neem + Insect + Fungus + Weed',tag:'COMBO'}
+];
+function render(){let q=(document.getElementById('s').value||'').toLowerCase(); let sort=document.getElementById('sort').value; let pr=document.getElementById('price').value; let list=all.filter(p=>p.name.toLowerCase().includes(q) && (!pr || (pr=='0-300'&&p.price<=300) || (pr=='300-600'&&p.price>300))); if(sort=='low') list.sort((a,b)=>a.price-b.price); if(sort=='high') list.sort((a,b)=>b.price-a.price); document.getElementById('list').innerHTML=list.map(p=>{let off=Math.round((1-p.price/p.old)*100); return `<div class="cat-card">${p.tag?`<span class="tag ${p.tag=='ORGANIC'?'tag-green':''}">${p.tag}</span>`:''}<div class="cat-emoji">${p.emoji}</div><span class="cat-badge">Pesticide • ${p.stock}</span><h4 style="margin:8px 0">${p.name}</h4><p class="cat-desc">${p.desc}</p><p><span class="p-rating">${p.rating} ★</span> 2,800+ Ratings</p><p class="p-price">₹${p.price} <span class="p-old">₹${p.old}</span> <span class="p-off">${off}% off</span></p><p class="p-delivery">FREE Delivery • COD Available</p><p class="phone-box">Seller: FarmerCart</p><br><button class="btn" onclick="add(${p.id})">ADD TO CART</button><button class="btn btn-buy" onclick="buy(${p.id})">BUY NOW</button></div>`}).join('');}
+function add(id){let cart=JSON.parse(localStorage.getItem('fc_cart')||'[]'); let p=all.find(x=>x.id==id); let ex=cart.find(x=>x.id==id); if(ex) ex.qty++; else cart.push({...p,cat:'Pesticide',qty:1}); localStorage.setItem('fc_cart',JSON.stringify(cart)); document.getElementById('cc').innerText=cart.length; alert(p.name+' added to cart!');}
+function buy(id){add(id); location.href='cart.html';}
+render(); document.getElementById('cc').innerText=JSON.parse(localStorage.getItem('fc_cart')||'[]').length;
+</script>
+<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
+</body></html>

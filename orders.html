@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><title>My Orders - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Fresh • Seeds • Fertilizer ★</span></div><div class="search-box"><input placeholder="Search..." onkeyup="if(event.key=='Enter') location.href='available.html'"><button onclick="location.href='available.html'">🔍</button></div><select class="lang-small"><option>🌐 EN</option><option>Hindi</option></select><button class="head-btn" onclick="location.href='index.html'">Home</button><button class="head-cart" onclick="location.href='cart.html'">🛒 Cart</button></header>
+<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a><a href="orders.html" class="active">My Orders</a></nav>
+<main>
+<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><h2 style="color:#1b5e20;font-size:26px">My Orders</h2><span class="badge">● Live Tracking</span></div>
+<p style="color:#666;margin-top:4px">All your orders are shown here. Owner will confirm and update status.</p><br>
+<div id="orders"></div>
+<div class="card" style="background:#e8f5e9"><h3 style="color:#1b5e20">How Order Confirmation Works?</h3><p style="margin-top:8px;line-height:1.8">1. Order is placed and sent to FarmerCart owner.<br>2. Owner will confirm your order.<br>3. Status will update: Packed → Shipped → Out for Delivery → Delivered.</p></div>
+<div class="card" style="background:#faf6e9"><h3 style="color:#1b5e20">Order Status Meaning</h3><p style="line-height:1.8;margin-top:8px"><b>Ordered:</b> Order received.<br><b>Packed:</b> Owner has packed the items.<br><b>Shipped:</b> Items are on the way.<br><b>Out for Delivery:</b> Delivery today.<br><b>Delivered:</b> Items received.</p></div>
+</main>
+<script>
+let orders = JSON.parse(localStorage.getItem('fc_orders') || '[]');
+let box = document.getElementById('orders');
+if(orders.length==0){ box.innerHTML = '<div class="order-card"><b style="font-size:18px">No Orders Yet! 🛒</b><p style="margin-top:6px;color:#666">No order has been placed yet.</p><br><button class="btn-blue" onclick="location.href=\'available.html\'">Shop Now →</button></div>'; }
+else { box.innerHTML = orders.map(o=>{ let steps = ['Ordered','Packed','Shipped','Out for Delivery','Delivered']; let idx = steps.indexOf(o.status); let track = steps.map((s,i)=>`<div class="${i<=idx?'active':''}"><div class="dot ${i<=idx?'done':'grey'}">${i<=idx?'✓':i+1}</div>${s}</div>`).join(''); return `<div class="order-card"><div class="order-top"><span class="order-id">Order ID: ${o.id}</span><span class="order-date">${o.date}</span></div><div class="order-meta"><b>Buyer:</b> ${o.name} &nbsp;|&nbsp; <b>Phone:</b> ${o.phone}<br><b>Address:</b> ${o.addr}, ${o.city} - ${o.pin}<br><b>Payment:</b> ${o.pay} &nbsp;|&nbsp; <b>Total: ₹${o.total}</b> &nbsp;|&nbsp; Status: <span class="badge">${o.status}</span><br><b>Items:</b> ${o.items.map(i=>i.name+' '+i.qty+'x').join(', ')}</div><div class="track">${track}</div><button class="btn-outline" onclick="location.href='help.html'">Contact Support</button><button class="btn" onclick="location.href='available.html'">Shop More →</button></div>`;}).join('');}
+</script>
+<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
+</body></html>

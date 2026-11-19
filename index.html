@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html><head><title>FarmerCart - Seeds, Fertilizer, Pesticides & Fresh Crops</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Fresh • Seeds • Fertilizer ★</span></div><div class="search-box"><input id="homeSearch" placeholder="Search for Seeds, Fertilizer, Pesticide, Mango, Tomato..." onkeyup="if(event.key=='Enter') searchHome()"><button onclick="searchHome()">🔍</button></div><select class="lang-small"><option>🌐 EN</option><option>Hindi</option><option>Bengali</option><option>Telugu</option><option>Tamil</option><option>Marathi</option></select><button class="head-btn" onclick="location.href='login.html'">Login</button><button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cartCount">0</span>)</button><button class="head-cart" onclick="location.href='orders.html'">My Orders</button></header>
+<nav><a href="index.html" class="active">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a><a href="orders.html">My Orders</a></nav>
+<main>
+<div class="banner"><h2>FarmerCart Big Sale - Up to 45% Off</h2><p>Seeds • Fertilizer • Pesticides • Fresh Crops - Everything in one place. Seller: Only FarmerCart. Free Delivery Above ₹499.</p><br><button class="btn btn-buy" onclick="location.href='available.html'">SHOP NOW →</button><button class="btn" onclick="location.href='login.html'">Seller Login (Owner Only)</button></div>
+<div class="section-title"><span>Top Categories</span><span style="color:#2e7d32;font-size:13px;cursor:pointer" onclick="location.href='available.html'">VIEW ALL →</span></div>
+<div class="grid">
+<div class="p-card" onclick="location.href='seeds.html'"><div class="p-img">🌱</div><h4>Seeds</h4><p>From ₹49</p><p class="p-delivery">Tomato, Wheat, Paddy Seeds</p></div>
+<div class="p-card" onclick="location.href='fertilizer.html'"><div class="p-img">🧪</div><h4>Fertilizer</h4><p>From ₹299</p><p class="p-delivery">Urea, DAP, NPK, Potash</p></div>
+<div class="p-card" onclick="location.href='pesticides.html'"><div class="p-img">🛡️</div><h4>Pesticides</h4><p>From ₹199</p><p class="p-delivery">Neem, Insecticide, Fungicide</p></div>
+<div class="p-card" onclick="location.href='fresh-crops.html'"><div class="p-img">🥭</div><h4>Fresh Crops</h4><p>From ₹18/kg</p><p class="p-delivery">Mango, Tomato, Potato</p></div>
+<div class="p-card" onclick="location.href='grocery.html'"><div class="p-img">🛒</div><h4>Grocery</h4><p>From ₹99</p><p class="p-delivery">Atta, Rice, Dal, Oil</p></div>
+<div class="p-card" onclick="location.href='available.html'"><div class="p-img">🧰</div><h4>Tools</h4><p>From ₹149</p><p class="p-delivery">Spray Pump, Tools</p></div>
+</div>
+<div class="section-title"><span>Deals of the Day</span><span style="color:#2e7d32;font-size:13px">GRAB OR GONE</span></div>
+<div class="grid" id="homeGrid"></div>
+<div class="section-title"><span>Why FarmerCart?</span></div>
+<div class="card"><b>1. Seller Only FarmerCart:</b><p>No other seller is available. Only FarmerCart sells here. That is why quality is guaranteed.</p></div>
+<div class="card"><b>2. Order Directly To Owner:</b><p>As soon as you place an order, it goes directly to the owner. The owner will confirm your order.</p></div>
+<div class="card"><b>3. Tracking Like Flipkart:</b><p>Ordered → Packed → Shipped → Out for Delivery → Delivered. Every step is visible in My Orders.</p></div>
+<div class="card"><b>4. COD / UPI / Card:</b><p>You can pay on delivery, by UPI or by card.</p></div>
+</main>
+<script>
+let products = JSON.parse(localStorage.getItem('fc_products')||'null') || [
+{id:1,cat:'Seed',name:'Tomato Seeds - Hybrid (100g)',price:149,old:249,rating:'4.6',emoji:'🌱',seller:'FarmerCart',stock:'In Stock'},
+{id:2,cat:'Seed',name:'Wheat Seeds - HD 2967 (5kg)',price:349,old:499,rating:'4.7',emoji:'🌾',seller:'FarmerCart',stock:'In Stock'},
+{id:3,cat:'Fertilizer',name:'Urea Fertilizer - 45kg Bag',price:299,old:399,rating:'4.6',emoji:'🧪',seller:'FarmerCart',stock:'In Stock'},
+{id:4,cat:'Fertilizer',name:'DAP Fertilizer - 50kg Bag',price:1299,old:1599,rating:'4.8',emoji:'🧪',seller:'FarmerCart',stock:'In Stock'},
+{id:5,cat:'Pesticide',name:'Neem Oil Pesticide - 1 Litre',price:299,old:449,rating:'4.6',emoji:'🛡️',seller:'FarmerCart',stock:'In Stock'},
+{id:6,cat:'Pesticide',name:'Fungicide - Saaf 500g',price:349,old:499,rating:'4.7',emoji:'🛡️',seller:'FarmerCart',stock:'In Stock'},
+{id:7,cat:'Fresh',name:'Mango (Dussehri) - 1kg',price:60,old:99,rating:'4.6',emoji:'🥭',seller:'FarmerCart',stock:'300 kg'},
+{id:8,cat:'Fresh',name:'Tomato - 1kg',price:22,old:35,rating:'4.4',emoji:'🍅',seller:'FarmerCart',stock:'150 kg'},
+{id:9,cat:'Grocery',name:'Atta - Whole Wheat 5kg',price:249,old:329,rating:'4.6',emoji:'🌾',seller:'FarmerCart',stock:'In Stock'},
+{id:10,cat:'Grocery',name:'Basmati Rice - 5kg',price:499,old:699,rating:'4.7',emoji:'🍚',seller:'FarmerCart',stock:'In Stock'}
+];
+localStorage.setItem('fc_products',JSON.stringify(products));
+function renderHome(){let g=document.getElementById('homeGrid'); g.innerHTML=''; products.forEach(p=>{let off=Math.round((1-p.price/p.old)*100); g.innerHTML+=`<div class="p-card"><div class="p-img">${p.emoji}</div><h4>${p.name}</h4><p><span class="p-rating">${p.rating} ★</span> <span style="color:#878787;font-size:11px">2,341 Ratings</span></p><p class="p-price">₹${p.price} <span class="p-old">₹${p.old}</span> <span class="p-off">${off}% off</span></p><p class="p-seller">Seller: ${p.seller} • ${p.stock}</p><p class="p-delivery">FREE Delivery • COD Available</p><button class="btn" onclick="addToCart(${p.id})">ADD TO CART</button><button class="btn btn-buy" onclick="buyNow(${p.id})">BUY NOW</button></div>`;});}
+function addToCart(id){let cart=JSON.parse(localStorage.getItem('fc_cart')||'[]'); let p=products.find(x=>x.id==id); let ex=cart.find(x=>x.id==id); if(ex) ex.qty++; else cart.push({...p,qty:1}); localStorage.setItem('fc_cart',JSON.stringify(cart)); updateCount(); alert(p.name+' added to cart!');}
+function buyNow(id){addToCart(id); location.href='cart.html';}
+function updateCount(){document.getElementById('cartCount').innerText=JSON.parse(localStorage.getItem('fc_cart')||'[]').length;}
+function searchHome(){localStorage.setItem('fc_search',document.getElementById('homeSearch').value); location.href='available.html';}
+renderHome(); updateCount();
+</script>
+<footer><b>FarmerCart | Seller Only: FarmerCart</b><p>Seeds | Fertilizer | Pesticides | Fresh Crops | Grocery | Tools</p></footer>
+</body></html>

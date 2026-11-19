@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html><head><title>Login - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Login</span></div></header>
+<main style="max-width:900px">
+<div style="display:flex;gap:0;background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.08)">
+<div style="flex:1;background:#2e7d32;color:white;padding:30px"><h2>Login</h2><p style="margin-top:10px;opacity:0.9">Get access to your Orders, Cart, and Seller Dashboard.</p><br><p>✅ Buyer Login: Any buyer can login</p><p>✅ Seller Login: Only Owner can login</p><p>✅ Order goes directly to Owner for confirmation</p></div>
+<div style="flex:1.2;padding:28px">
+<h3>Login With Email</h3>
+<label>Email Address *</label><input id="loginEmail" placeholder="e.g. buyer@gmail.com">
+<label>Password *</label><input id="loginPass" type="password" placeholder="Enter password">
+<br><button class="btn btn-buy" style="width:100%;padding:14px" onclick="doLogin()">LOGIN →</button>
+<p style="margin-top:10px;font-size:12px;color:#666">Demo Buyer: Any email + Password: <b>1234</b><br>Demo Seller: Email: <b>owner@farmercart.com</b> + Password: <b>owner123</b></p>
+<div class="card" style="background:#f8f9fa;margin-top:16px"><b>How To Login As Seller?</b><p>Use Owner Email: <b>owner@farmercart.com</b> and Password: <b>owner123</b> → Seller Dashboard will open. If you use any other email, Buyer Dashboard will open, Seller Dashboard will not open.</p></div>
+<button class="btn-outline" onclick="location.href='index.html'">Continue as Guest - Start Shopping</button>
+</div>
+</div>
+</main>
+<script>
+function doLogin(){
+let em=document.getElementById('loginEmail').value.trim(); let pw=document.getElementById('loginPass').value.trim();
+if(!em){alert('Please enter email!'); return;}
+if(em=='owner@farmercart.com' && pw=='owner123'){localStorage.setItem('fc_user','owner'); alert('Welcome Owner! Seller Dashboard is opening. You are the only seller.'); location.href='farmernew.html';}
+else if(pw=='1234'){localStorage.setItem('fc_user',em); alert('Login Successful! Welcome Buyer. Start shopping.'); location.href='index.html';}
+else{alert('Wrong password! Buyer Demo Password is 1234. Seller Password is owner123.');}
+}
+</script>
+<footer><b>FarmerCart | Login Secure</b></footer>
+</body></html>

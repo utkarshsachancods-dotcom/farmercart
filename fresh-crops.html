@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html><head><title>Fresh Crops - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Fresh • Seeds • Fertilizer ★</span></div><div class="search-box"><input id="s" placeholder="Search Mango, Tomato, Potato..." onkeyup="render()"><button onclick="render()">🔍</button></div><select class="lang-small"><option>🌐 EN</option><option>Hindi</option></select><button class="head-btn" onclick="location.href='login.html'">Login</button><button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cc">0</span>)</button></header>
+<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html" class="active">Fresh Crops</a><a href="grocery.html">Grocery</a><a href="orders.html">My Orders</a></nav>
+<main>
+<div class="cat-hero"><h2>🥭 Fresh Crops - Farm Fresh Produce</h2><p>Directly from the farm - harvested yesterday. Mango, Tomato, Potato, Onion, Cauliflower - All fresh, all at the best price. If produce is spoiled, money will be refunded.</p><span>★ Seller Only: FarmerCart | Free Delivery Above ₹499</span></div>
+<div class="cat-stats"><div><b>18+</b> Fresh Crops</div><div><b>4.6★</b> Avg Rating</div><div><b>5,000+</b> Orders Delivered</div><div><b>100%</b> Fresh Guarantee</div></div>
+<div class="cat-filter"><input placeholder="Search fresh produce..." onkeyup="document.getElementById('s').value=this.value;render()"><select id="sort" onchange="render()"><option value="">Sort: Popularity</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select><select id="price" onchange="render()"><option value="">All Prices</option><option value="0-30">Under ₹30/kg</option><option value="30-100">Above ₹30/kg</option></select><button class="btn-blue" onclick="location.href='cart.html'">Go to Cart →</button></div>
+<div class="cat-grid" id="list"></div>
+<div class="section-title">🥭 How To Identify Fresh Produce?</div>
+<div class="cat-info"><h3>How To Identify Fresh Produce</h3><p style="line-height:1.9;margin-top:8px"><b>Mango:</b> Should have light fragrance, slightly soft when pressed, no spots.<br><b>Tomato:</b> Red, shiny, slightly soft when pressed.<br><b>Potato:</b> Should be hard, no sprouts.<br><b>Onion:</b> Dry, hard, skin should be tight.<br><b>Cauliflower:</b> White, tight flower, leaves green.<br><b>Spinach:</b> Green, fresh, not wilted.</p></div>
+<div class="cat-info"><h3>🏠 How To Store At Home?</h3><p style="line-height:1.9;margin-top:8px">1. Keep potato and onion separately.<br>2. Do not keep tomato in fridge, keep it outside.<br>3. Wrap spinach and coriander in wet cloth and keep in fridge.<br>4. Wrap mango in newspaper, it will ripen faster.</p></div>
+<div class="section-title">⭐ Reviews</div>
+<div class="cat-review"><b>Rahul Verma - Lucknow ★★★★★</b><p>"Ordered mango, got exact sweet Malihabad mango. Delivery arrived in 2 days."</p></div>
+<div class="cat-review"><b>Anjali Sharma ★★★★★</b><p>"Tomato and potato were cheaper and fresher than market. Bought on COD, very easy."</p></div>
+<div class="section-title">❓ FAQs</div>
+<div class="cat-faq"><b>Q: What if produce is spoiled?</b><p>A: Send a photo, you will get replacement or refund within 2 days.</p></div>
+<div class="cat-faq"><b>Q: Want to buy in bulk?</b><p>A: Yes, for 100kg+ orders, contact us for wholesale rates.</p></div>
+</main>
+<script>
+let all=[
+{id:401,name:'Mango (Dussehri) - 1kg',price:60,old:99,rating:'4.6',emoji:'🥭',stock:'300 kg',desc:'Sweet Malihabad mango',tag:'BESTSELLER'},
+{id:402,name:'Tomato - 1kg',price:22,old:35,rating:'4.4',emoji:'🍅',stock:'150 kg',desc:'Red, fresh, harvested yesterday',tag:''},
+{id:403,name:'Potato - 1kg',price:18,old:28,rating:'4.5',emoji:'🥔',stock:'500 kg',desc:'Large potato, best for shops',tag:'BESTSELLER'},
+{id:404,name:'Onion - 1kg',price:25,old:40,rating:'4.3',emoji:'🧅',stock:'200 kg',desc:'Red onion, long lasting',tag:''},
+{id:405,name:'Cauliflower - 1kg',price:30,old:45,rating:'4.4',emoji:'🥦',stock:'120 kg',desc:'White cauliflower',tag:''},
+{id:406,name:'Green Chilli - 1kg',price:40,old:55,rating:'4.2',emoji:'🌶️',stock:'80 kg',desc:'Spicy green chilli',tag:''},
+{id:407,name:'Brinjal - 1kg',price:20,old:30,rating:'4.3',emoji:'🍆',stock:'90 kg',desc:'Fresh brinjal',tag:''},
+{id:408,name:'Lady Finger - 1kg',price:28,old:40,rating:'4.4',emoji:'🥒',stock:'70 kg',desc:'Soft lady finger',tag:''},
+{id:409,name:'Cabbage - 1kg',price:18,old:28,rating:'4.4',emoji:'🥬',stock:'100 kg',desc:'Tight cabbage',tag:'NEW'},
+{id:410,name:'Carrot - 1kg',price:25,old:35,rating:'4.5',emoji:'🥕',stock:'80 kg',desc:'Red carrot, sweet',tag:''},
+{id:411,name:'Spinach - 1kg',price:20,old:30,rating:'4.5',emoji:'🥬',stock:'60 kg',desc:'Green spinach',tag:''},
+{id:412,name:'Coriander - 1 Bunch',price:15,old:25,rating:'4.6',emoji:'🌿',stock:'50 Bunch',desc:'Fragrant coriander',tag:''},
+{id:413,name:'Peas - 1kg',price:45,old:65,rating:'4.4',emoji:'🫛',stock:'70 kg',desc:'Sweet peas',tag:''},
+{id:414,name:'Bottle Gourd - 1pc',price:25,old:40,rating:'4.3',emoji:'🥒',stock:'40 pc',desc:'Long bottle gourd',tag:''},
+{id:415,name:'Bitter Gourd - 1kg',price:30,old:45,rating:'4.2',emoji:'🥒',stock:'50 kg',desc:'Bitter gourd',tag:''},
+{id:416,name:'Pumpkin - 1kg',price:22,old:32,rating:'4.4',emoji:'🎃',stock:'80 kg',desc:'Yellow pumpkin',tag:''},
+{id:417,name:'Garlic - 1kg',price:180,old:250,rating:'4.6',emoji:'🧄',stock:'40 kg',desc:'Desi garlic, strong',tag:'NEW'},
+{id:418,name:'Ginger - 1kg',price:90,old:130,rating:'4.5',emoji:'🫚',stock:'50 kg',desc:'Fresh ginger',tag:''}
+];
+function render(){let q=(document.getElementById('s').value||'').toLowerCase(); let sort=document.getElementById('sort').value; let pr=document.getElementById('price').value; let list=all.filter(p=>p.name.toLowerCase().includes(q) && (!pr || (pr=='0-30'&&p.price<=30) || (pr=='30-100'&&p.price>30))); if(sort=='low') list.sort((a,b)=>a.price-b.price); if(sort=='high') list.sort((a,b)=>b.price-a.price); document.getElementById('list').innerHTML=list.map(p=>{let off=Math.round((1-p.price/p.old)*100); return `<div class="cat-card">${p.tag?`<span class="tag">${p.tag}</span>`:''}<div class="cat-emoji">${p.emoji}</div><span class="cat-badge">Fresh • ${p.stock}</span><h4 style="margin:8px 0">${p.name}</h4><p class="cat-desc">${p.desc}</p><p><span class="p-rating">${p.rating} ★</span> 5,000+ Ratings</p><p class="p-price">₹${p.price} <span class="p-old">₹${p.old}</span> <span class="p-off">${off}% off</span></p><p class="p-delivery">FREE Delivery • COD Available</p><p class="phone-box">Seller: FarmerCart</p><br><button class="btn" onclick="add(${p.id})">ADD TO CART</button><button class="btn btn-buy" onclick="buy(${p.id})">BUY NOW</button></div>`}).join('');}
+function add(id){let cart=JSON.parse(localStorage.getItem('fc_cart')||'[]'); let p=all.find(x=>x.id==id); let ex=cart.find(x=>x.id==id); if(ex) ex.qty++; else cart.push({...p,cat:'Fresh',qty:1}); localStorage.setItem('fc_cart',JSON.stringify(cart)); document.getElementById('cc').innerText=cart.length; alert(p.name+' added to cart!');}
+function buy(id){add(id); location.href='cart.html';}
+render(); document.getElementById('cc').innerText=JSON.parse(localStorage.getItem('fc_cart')||'[]').length;
+</script>
+<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
+</body></html>

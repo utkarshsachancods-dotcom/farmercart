@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html><head><title>My Cart - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart</div><button class="head-btn" onclick="location.href='index.html'">Continue Shopping</button><button class="head-btn" onclick="location.href='orders.html'">My Orders</button></header>
+<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a></nav>
+<main>
+<h2>My Cart (<span id="count">0</span>) - FarmerCart</h2>
+<div id="cartItems"></div>
+<div class="card" id="priceBox"></div>
+<button class="btn btn-buy" style="padding:15px 36px;font-size:17px" onclick="location.href='checkout.html'">PLACE ORDER →</button>
+<p style="margin-top:8px;color:#666;font-size:13px">Order will go directly to FarmerCart owner for confirmation.</p>
+</main>
+<script>
+let cart=JSON.parse(localStorage.getItem('fc_cart')||'[]');
+function render(){let box=document.getElementById('cartItems'); document.getElementById('count').innerText=cart.length;
+if(cart.length==0){box.innerHTML='<div class="card"><b>Your Cart is Empty!</b><p>Browse products and add to cart.</p><button class="btn-blue" onclick="location.href=\'available.html\'">Shop Now</button></div>'; document.getElementById('priceBox').innerHTML=''; return;}
+let total=0; box.innerHTML='';
+cart.forEach((c,i)=>{let t=c.price*c.qty; total+=t; box.innerHTML+=`<div class="card"><div style="display:flex;gap:14px;align-items:center"><div style="font-size:48px">${c.emoji}</div><div style="flex:1"><h4>${c.name}</h4><p style="color:#878787;font-size:12px">Seller: FarmerCart • ${c.cat}</p><p><b>₹${c.price}</b> <span class="p-old">₹${c.old}</span></p><p><button style="width:30px;height:30px" onclick="changeQty(${i},-1)">-</button> <b>${c.qty}</b> <button style="width:30px;height:30px" onclick="changeQty(${i},1)">+</button> <button class="btn-outline" onclick="removeItem(${i})">REMOVE</button></p></div><div><b>₹${t}</b></div></div></div>`;});
+let delivery=total>499?0:40; let final=total+delivery;
+document.getElementById('priceBox').innerHTML=`<h3>PRICE DETAILS</h3><p>Price: ₹${total}</p><p>Delivery: ${delivery==0?'FREE':'₹'+delivery}</p><hr><h3>Total: ₹${final}</h3><p style="color:#388e3c">You save ₹${cart.reduce((s,c)=>s+(c.old-c.price)*c.qty,0)}</p>`;}
+function changeQty(i,d){cart[i].qty=Math.max(1,cart[i].qty+d); localStorage.setItem('fc_cart',JSON.stringify(cart)); render();}
+function removeItem(i){cart.splice(i,1); localStorage.setItem('fc_cart',JSON.stringify(cart)); render();}
+render();
+</script>
+<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
+</body></html>

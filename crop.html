@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html><head><title>Add Product - FarmerCart Owner Only</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Owner Only</span></div><button class="head-btn" onclick="location.href='farmernew.html'">Dashboard</button></header>
+<main>
+<h2>Add Product - Only Owner Can Add</h2>
+<p>No other seller exists. Only owner can add products - Seeds, Fertilizer, Pesticide, Fresh Crop, Grocery.</p>
+<form onsubmit="addProduct(event)" class="card">
+<label>Category *</label><select id="pCat"><option>Seed</option><option>Fertilizer</option><option>Pesticide</option><option>Fresh</option><option>Grocery</option></select>
+<label>Product Name *</label><input id="pName" placeholder="e.g. Urea Fertilizer 45kg, Tomato Seeds 100g" required>
+<div class="row"><div><label>Price (Rs.) *</label><input id="pPrice" type="number" placeholder="e.g. 299" required></div><div><label>MRP / Old Price</label><input id="pOld" type="number" placeholder="e.g. 399"></div></div>
+<label>Emoji</label><select id="pEmoji"><option>🌱</option><option>🧪</option><option>🛡️</option><option>🥭</option><option>🍅</option><option>🥔</option><option>🍚</option><option>🧰</option></select>
+<br><button class="btn btn-buy" type="submit">ADD PRODUCT - LIST NOW</button>
+</form>
+</main>
+<script>
+let user=localStorage.getItem('fc_user');
+if(user && user!='owner'){alert('Access Denied! Only Owner can add products.'); location.href='index.html';}
+function addProduct(e){e.preventDefault();
+let products=JSON.parse(localStorage.getItem('fc_products')||'[]');
+let p={id:Date.now(),cat:document.getElementById('pCat').value,name:document.getElementById('pName').value,price:Number(document.getElementById('pPrice').value),old:Number(document.getElementById('pOld').value||document.getElementById('pPrice').value*1.4),rating:'4.5',emoji:document.getElementById('pEmoji').value,seller:'FarmerCart',stock:'In Stock'};
+products.unshift(p); localStorage.setItem('fc_products',JSON.stringify(products));
+alert('Product Added! Now it will show in Home and All Products.');
+location.href='farmernew.html';}
+</script>
+<footer><b>FarmerCart Owner Only</b></footer>
+</body></html>

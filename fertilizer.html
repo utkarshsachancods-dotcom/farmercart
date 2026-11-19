@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html><head><title>Fertilizer - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Fresh • Seeds • Fertilizer ★</span></div><div class="search-box"><input id="s" placeholder="Search Fertilizer - Urea, DAP..." onkeyup="render()"><button onclick="render()">🔍</button></div><select class="lang-small"><option>🌐 EN</option><option>Hindi</option></select><button class="head-btn" onclick="location.href='login.html'">Login</button><button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cc">0</span>)</button></header>
+<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html" class="active">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a><a href="orders.html">My Orders</a></nav>
+<main>
+<div class="cat-hero"><h2>🧪 Fertilizer - Plant Nutrition</h2><p>Urea, DAP, NPK, Potash, Zinc, Organic Fertilizer - Original Company Fertilizer At The Right Price. Double Your Yield.</p><span>★ Seller Only: FarmerCart | Free Delivery Above ₹499</span></div>
+<div class="cat-stats"><div><b>18+</b> Fertilizers</div><div><b>4.7★</b> Avg Rating</div><div><b>3,200+</b> Farmers Bought</div><div><b>100%</b> Original</div></div>
+<div class="cat-filter"><input placeholder="Search fertilizer..." onkeyup="document.getElementById('s').value=this.value;render()"><select id="sort" onchange="render()"><option value="">Sort: Popularity</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select><select id="price" onchange="render()"><option value="">All Prices</option><option value="0-300">Under ₹300</option><option value="300-800">₹300 - ₹800</option><option value="800-2000">Above ₹800</option></select><button class="btn-blue" onclick="location.href='cart.html'">Go to Cart →</button></div>
+<div class="cat-grid" id="list"></div>
+<div class="section-title">🧪 Fertilizer Guide</div>
+<div class="cat-info"><h3>Complete Fertilizer Schedule</h3><p style="line-height:1.9;margin-top:8px"><b>Base Dose (Before Sowing):</b> DAP + Potash + Zinc - Roots will be strong.<br><b>After 20 Days:</b> Urea - Crop will be green, growth will be fast.<br><b>After 40 Days:</b> NPK 19:19:19 - More flowers and fruits.<br><b>After 60 Days:</b> Potash - Grain will be heavy, weight will increase.<br><b>Organic:</b> Vermicompost every 30 days - Soil will stay soft.</p></div>
+<div class="section-title">⭐ Reviews</div>
+<div class="cat-review"><b>Anil Kumar - Malihabad ★★★★★</b><p>"Bought DAP 50kg, rate was lower than market. Delivery arrived in 2 days."</p></div>
+<div class="cat-review"><b>Geeta Devi ★★★★★</b><p>"Bought Vermicompost, taste of vegetables improved. Now I buy every month."</p></div>
+<div class="section-title">❓ Fertilizer FAQs</div>
+<div class="cat-faq"><b>Q: How much Urea for 1 acre?</b><p>A: Wheat - 45kg, Paddy - 50kg. Written on the packet.</p></div>
+<div class="cat-faq"><b>Q: Is fertilizer original?</b><p>A: Yes, 100% Original, Company sealed packing. If duplicate, money will be refunded.</p></div>
+</main>
+<script>
+let all=[
+{id:201,name:'Urea Fertilizer - 45kg Bag',price:299,old:399,rating:'4.6',emoji:'🧪',stock:'In Stock',desc:'Fast growth, green crop',tag:'BESTSELLER'},
+{id:202,name:'DAP Fertilizer - 50kg Bag',price:1299,old:1599,rating:'4.8',emoji:'🧪',stock:'In Stock',desc:'Strong roots, before sowing',tag:'BESTSELLER'},
+{id:203,name:'NPK 19:19:19 - 1kg',price:249,old:349,rating:'4.5',emoji:'🧪',stock:'In Stock',desc:'All-rounder fertilizer',tag:''},
+{id:204,name:'Potash - MOP 50kg',price:899,old:1099,rating:'4.4',emoji:'🧪',stock:'In Stock',desc:'Heavy grain, more weight',tag:''},
+{id:205,name:'Zinc Sulphate - 5kg',price:349,old:449,rating:'4.5',emoji:'🧪',stock:'In Stock',desc:'Leaves will not turn yellow',tag:''},
+{id:206,name:'Super Phosphate - 50kg',price:499,old:649,rating:'4.4',emoji:'🧪',stock:'In Stock',desc:'More flowers',tag:''},
+{id:207,name:'Vermicompost - 10kg Organic',price:299,old:399,rating:'4.7',emoji:'🌱',stock:'In Stock',desc:'Organic, soft soil',tag:'ORGANIC'},
+{id:208,name:'Gobar Khad - Organic 20kg',price:199,old:299,rating:'4.6',emoji:'🌱',stock:'In Stock',desc:'Desi fertilizer, good taste',tag:'ORGANIC'},
+{id:209,name:'NPK 12:32:16 - 25kg',price:999,old:1299,rating:'4.6',emoji:'🧪',stock:'In Stock',desc:'Best for potato, onion',tag:'NEW'},
+{id:210,name:'Calcium Nitrate - 5kg',price:449,old:599,rating:'4.5',emoji:'🧪',stock:'In Stock',desc:'For tomato, will not crack',tag:'NEW'},
+{id:211,name:'Magnesium Sulphate - 5kg',price:299,old:399,rating:'4.4',emoji:'🧪',stock:'In Stock',desc:'Leaf will stay green',tag:''},
+{id:212,name:'Boron - 1kg',price:199,old:279,rating:'4.3',emoji:'🧪',stock:'In Stock',desc:'Fruit falling will stop',tag:''},
+{id:213,name:'Sulphur - 5kg',price:249,old:329,rating:'4.5',emoji:'🧪',stock:'In Stock',desc:'For mustard, onion',tag:''},
+{id:214,name:'Humic Acid - 1 Litre',price:349,old:479,rating:'4.6',emoji:'🧴',stock:'In Stock',desc:'Liquid fertilizer, fast effect',tag:'NEW'},
+{id:215,name:'Seaweed Extract - 1 Litre',price:399,old:549,rating:'4.7',emoji:'🌊',stock:'In Stock',desc:'Natural growth hormone',tag:'ORGANIC'},
+{id:216,name:'Micronutrient Mix - 1kg',price:299,old:399,rating:'4.5',emoji:'🧪',stock:'In Stock',desc:'All deficiencies together',tag:''},
+{id:217,name:'Urea + DAP Combo',price:1499,old:1999,rating:'4.8',emoji:'🎁',stock:'In Stock',desc:'Combo offer, save ₹500',tag:'COMBO'},
+{id:218,name:'Organic Jeevamrut - 5 Litre',price:249,old:349,rating:'4.6',emoji:'🌱',stock:'In Stock',desc:'Desi method, 100% organic',tag:'ORGANIC'}
+];
+function render(){let q=(document.getElementById('s').value||'').toLowerCase(); let sort=document.getElementById('sort').value; let pr=document.getElementById('price').value; let list=all.filter(p=>p.name.toLowerCase().includes(q) && (!pr || (pr=='0-300'&&p.price<=300) || (pr=='300-800'&&p.price>300&&p.price<=800) || (pr=='800-2000'&&p.price>800))); if(sort=='low') list.sort((a,b)=>a.price-b.price); if(sort=='high') list.sort((a,b)=>b.price-a.price); document.getElementById('list').innerHTML=list.map(p=>{let off=Math.round((1-p.price/p.old)*100); return `<div class="cat-card">${p.tag?`<span class="tag ${p.tag=='ORGANIC'?'tag-green':''}">${p.tag}</span>`:''}<div class="cat-emoji">${p.emoji}</div><span class="cat-badge">Fertilizer • ${p.stock}</span><h4 style="margin:8px 0">${p.name}</h4><p class="cat-desc">${p.desc}</p><p><span class="p-rating">${p.rating} ★</span> 3,200+ Ratings</p><p class="p-price">₹${p.price} <span class="p-old">₹${p.old}</span> <span class="p-off">${off}% off</span></p><p class="p-delivery">FREE Delivery • COD Available</p><p class="phone-box">Seller: FarmerCart</p><br><button class="btn" onclick="add(${p.id})">ADD TO CART</button><button class="btn btn-buy" onclick="buy(${p.id})">BUY NOW</button></div>`}).join('');}
+function add(id){let cart=JSON.parse(localStorage.getItem('fc_cart')||'[]'); let p=all.find(x=>x.id==id); let ex=cart.find(x=>x.id==id); if(ex) ex.qty++; else cart.push({...p,cat:'Fertilizer',qty:1}); localStorage.setItem('fc_cart',JSON.stringify(cart)); document.getElementById('cc').innerText=cart.length; alert(p.name+' added to cart!');}
+function buy(id){add(id); location.href='cart.html';}
+render(); document.getElementById('cc').innerText=JSON.parse(localStorage.getItem('fc_cart')||'[]').length;
+</script>
+<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
+</body></html>

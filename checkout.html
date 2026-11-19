@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html><head><title>Checkout - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart</div><button class="head-btn" onclick="location.href='cart.html'">Back to Cart</button></header>
+<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="orders.html">My Orders</a></nav>
+<main>
+<h2>Checkout - Address + Payment</h2>
+<div class="card"><h3>1. Delivery Address</h3>
+<label>Full Name *</label><input id="cName" placeholder="e.g. Ramesh Kumar">
+<label>Mobile Number *</label><input id="cPhone" placeholder="Enter your mobile number">
+<div class="row"><div><label>Pincode *</label><input id="cPin" placeholder="e.g. 201306"></div><div><label>Village / City</label><input id="cCity" placeholder="e.g. Greater Noida"></div></div>
+<label>Full Address *</label><textarea id="cAddr" rows="2" placeholder="House No, Village, District"></textarea></div>
+<div class="card"><h3>2. Payment</h3>
+<label><input type="radio" name="pay" value="Cash on Delivery (COD)" checked style="width:auto"> Cash on Delivery (COD)</label><br>
+<label><input type="radio" name="pay" value="UPI" style="width:auto"> UPI - PhonePe / Google Pay</label><br>
+<label><input type="radio" name="pay" value="Card" style="width:auto"> Debit / Credit Card</label></div>
+<div class="card"><h3>3. Order Summary</h3><div id="summary"></div><p style="margin-top:8px;color:#2e7d32;font-weight:700">Order will go directly to FarmerCart owner for confirmation.</p></div>
+<button class="btn btn-buy" style="padding:15px 36px;font-size:18px" onclick="placeOrder()">PLACE ORDER →</button>
+</main>
+<script>
+let cart=JSON.parse(localStorage.getItem('fc_cart')||'[]');
+let total=cart.reduce((s,c)=>s+c.price*c.qty,0); let delivery=total>499?0:40; let final=total+delivery;
+document.getElementById('summary').innerHTML=cart.map(c=>`<p>${c.name} - ${c.qty} x ₹${c.price} = ₹${c.price*c.qty}</p>`).join('')+`<hr><p>Total: ₹${total} + Delivery ₹${delivery} = <b>₹${final}</b></p>`;
+function placeOrder(){
+let name=document.getElementById('cName').value; let phone=document.getElementById('cPhone').value; let addr=document.getElementById('cAddr').value; let pin=document.getElementById('cPin').value; let city=document.getElementById('cCity').value;
+if(!name||!phone||!addr){alert('Please fill Name, Phone and Address!'); return;}
+let pay=document.querySelector('input[name="pay"]:checked').value;
+let orderId='FC'+Math.floor(10000+Math.random()*90000);
+let order={id:orderId,name,phone,addr,pin,city,pay,total:final,items:cart,status:'Ordered',date:new Date().toLocaleString()};
+let orders=JSON.parse(localStorage.getItem('fc_orders')||'[]'); orders.unshift(order); localStorage.setItem('fc_orders',JSON.stringify(orders));
+localStorage.setItem('fc_cart','[]');
+alert('Order Placed! Order ID: '+orderId+'\n\nYour order has been sent to FarmerCart owner for confirmation. You can track it in My Orders.');
+location.href='orders.html';
+}
+</script>
+<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
+</body></html>
