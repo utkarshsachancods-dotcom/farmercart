@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html><head><title>Register As Farmer Seller - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Farmer Seller Registration</span></div><button class="head-btn" onclick="location.href='index.html'">⬅ Home</button></header>
+<main style="max-width:900px;margin:auto;padding:16px">
+<div class="banner"><h2>👨‍🌾 Become A Farmer Seller</h2><p>Sell your Seeds, Fertilizer, Crops directly to customers. No commission. Customer will call / WhatsApp you directly.</p></div>
+
+<div class="card" style="margin-top:16px">
+<h3>1. Farmer Registration Form</h3>
+<p style="font-size:13px;color:#666">Fill this form. Your number will be shown to customers so they can contact you.</p><br>
+<label>Full Name *</label><input id="fName" placeholder="e.g. Ram Singh" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<label>Mobile Number * (Customer isi pe Call / WhatsApp karega)</label><input id="fMobile" type="tel" maxlength="10" placeholder="10 digit mobile" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<label>Village / City *</label><input id="fVillage" placeholder="e.g. Greater Noida" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<label>What Do You Sell?</label><select id="fType" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><option>Fresh Crops - Tomato, Mango, Potato</option><option>Seeds</option><option>Fertilizer</option><option>Pesticides</option><option>Grocery - Atta, Rice, Dal</option><option>All Types</option></select>
+<label>Years of Farming</label><input id="fExp" type="number" placeholder="e.g. 5" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<button class="btn btn-buy" onclick="registerFarmer()" style="width:100%;padding:14px">✅ REGISTER AS SELLER</button>
+<p id="msg" style="display:none;background:#e8f5e9;padding:12px;border-radius:8px;margin-top:10px"></p>
+</div>
+
+<div class="card" style="margin-top:14px">
+<h3>2. Add Your Product (After Registration)</h3>
+<p style="font-size:13px;color:#666">Registration ke baad yahan se apna product add karo. Wo Home Page pe dikhega.</p><br>
+<label>Product Name *</label><input id="pName" placeholder="e.g. Tomato - 1kg, Wheat Seeds 5kg" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<label>Price (Rs) *</label><input id="pPrice" type="number" placeholder="e.g. 25" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<label>Old Price (Rs) - For Discount</label><input id="pOld" type="number" placeholder="e.g. 35" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<label>Category</label><select id="pCat" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px"><option>Fresh</option><option>Seed</option><option>Fertilizer</option><option>Pesticide</option><option>Grocery</option></select>
+<label>Stock / Quantity</label><input id="pStock" placeholder="e.g. 50 kg, In Stock" style="width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px">
+<button class="btn" onclick="addFarmerProduct()" style="width:100%;padding:14px">➕ ADD MY PRODUCT</button>
+</div>
+
+<div class="card" style="margin-top:14px"><h3>👥 Registered Farmer Sellers</h3><div id="farmerList"></div>
+<a href="index.html" style="display:block;text-align:center;background:#2e7d32;color:#fff;padding:12px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:12px">👀 See My Product On Home Page →</a></div>
+</main>
+<script>
+let farmers = JSON.parse(localStorage.getItem('fc_farmers')||'[]');
+function showFarmers(){
+  document.getElementById('farmerList').innerHTML = farmers.length ? farmers.map(f=>`<p style="border-bottom:1px solid #eee;padding:8px 0">👨‍🌾 <b>${f.name}</b> - ${f.mobile} - 📍 ${f.village} - ${f.type} <br><a href="tel:+91${f.mobile}" style="color:#1976d2">📞 Call</a> | <a href="https://wa.me/91${f.mobile}" target="_blank" style="color:#25D366">💬 WhatsApp</a></p>`).join('') : '<p>No farmer registered yet. Be the first!</p>';
+}
+function registerFarmer(){
+  let n=document.getElementById('fName').value.trim(), m=document.getElementById('fMobile').value.trim(), v=document.getElementById('fVillage').value.trim();
+  if(!n||!m||!v){alert('Please fill Name, Mobile and Village');return;}
+  if(m.length!==10||isNaN(m)){alert('Enter correct 10 digit mobile');return;}
+  farmers.push({name:n,mobile:m,village:v,type:document.getElementById('fType').value,exp:document.getElementById('fExp').value});
+  localStorage.setItem('fc_farmers',JSON.stringify(farmers));
+  localStorage.setItem('fc_current_farmer',JSON.stringify({name:n,mobile:m,village:v}));
+  document.getElementById('msg').style.display='block';
+  document.getElementById('msg').innerText='✅ Registration Successful! '+n+', ab neeche se apna product add karo.';
+  showFarmers();
+}
+function addFarmerProduct(){
+  let cur = JSON.parse(localStorage.getItem('fc_current_farmer')||'null');
+  if(!cur){alert('Pehle upar se Register karo, phir product add karo.');return;}
+  let name=document.getElementById('pName').value.trim(), price=document.getElementById('pPrice').value, old=document.getElementById('pOld').value;
+  if(!name||!price){alert('Please fill Product Name and Price');return;}
+  let list = JSON.parse(localStorage.getItem('fc_farmer_products')||'[]');
+  let emoji = '🌾'; if(name.toLowerCase().includes('tomato')) emoji='🍅'; if(name.toLowerCase().includes('mango')) emoji='🥭'; if(name.toLowerCase().includes('seed')) emoji='🌱';
+  list.unshift({id:Date.now(),cat:document.getElementById('pCat').value,name,price:Number(price),old:Number(old||price+10),rating:'4.6',emoji,seller:'FarmerCart',farmer:cur.name,mobile:cur.mobile,village:cur.village,stock:document.getElementById('pStock').value||'In Stock'});
+  localStorage.setItem('fc_farmer_products',JSON.stringify(list));
+  alert('Product Added! Home Page pe jaake dekho.');
+  location.href='index.html';
+}
+showFarmers();
+</script>
+</body></html>

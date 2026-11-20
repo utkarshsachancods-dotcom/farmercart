@@ -20,9 +20,9 @@
 function doLogin(){
 let em=document.getElementById('loginEmail').value.trim(); let pw=document.getElementById('loginPass').value.trim();
 if(!em){alert('Please enter email!'); return;}
-if(em=='owner@farmercart.com' && pw=='owner123'){localStorage.setItem('fc_user','owner'); alert('Welcome Owner! Seller Dashboard is opening. You are the only seller.'); location.href='farmernew.html';}
+if(em=='owner@farmercart.com' && pw=='123'){localStorage.setItem('fc_user','owner'); alert('Welcome  Seller Dashboard is opening. You are the only seller.'); location.href='farmernew.html';}
 else if(pw=='1234'){localStorage.setItem('fc_user',em); alert('Login Successful! Welcome Buyer. Start shopping.'); location.href='index.html';}
-else{alert('Wrong password! Buyer Demo Password is 1234. Seller Password is owner123.');}
+else{alert('Wrong password! Buyer Demo Password is 1234. Seller Password is 123.');}
 }
 </script>
 <footer><b>FarmerCart | Login Secure</b></footer>

@@ -5,10 +5,10 @@
 <nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a><a href="orders.html" class="active">My Orders</a></nav>
 <main>
 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px"><h2 style="color:#1b5e20;font-size:26px">My Orders</h2><span class="badge">● Live Tracking</span></div>
-<p style="color:#666;margin-top:4px">All your orders are shown here. Owner will confirm and update status.</p><br>
+<p style="color:#666;margin-top:4px">All your orders are shown here.  will confirm and update status.</p><br>
 <div id="orders"></div>
-<div class="card" style="background:#e8f5e9"><h3 style="color:#1b5e20">How Order Confirmation Works?</h3><p style="margin-top:8px;line-height:1.8">1. Order is placed and sent to FarmerCart owner.<br>2. Owner will confirm your order.<br>3. Status will update: Packed → Shipped → Out for Delivery → Delivered.</p></div>
-<div class="card" style="background:#faf6e9"><h3 style="color:#1b5e20">Order Status Meaning</h3><p style="line-height:1.8;margin-top:8px"><b>Ordered:</b> Order received.<br><b>Packed:</b> Owner has packed the items.<br><b>Shipped:</b> Items are on the way.<br><b>Out for Delivery:</b> Delivery today.<br><b>Delivered:</b> Items received.</p></div>
+<div class="card" style="background:#e8f5e9"><h3 style="color:#1b5e20">How Order Confirmation Works?</h3><p style="margin-top:8px;line-height:1.8">1. Order is placed and sent to FarmerCart.<br>2.  will confirm your order.<br>3. Status will update: Packed → Shipped → Out for Delivery → Delivered.</p></div>
+<div class="card" style="background:#faf6e9"><h3 style="color:#1b5e20">Order Status Meaning</h3><p style="line-height:1.8;margin-top:8px"><b>Ordered:</b> Order received.<br><b>Packed:</b> has packed the items.<br><b>Shipped:</b> Items are on the way.<br><b>Out for Delivery:</b> Delivery today.<br><b>Delivered:</b> Items received.</p></div>
 </main>
 <script>
 let orders = JSON.parse(localStorage.getItem('fc_orders') || '[]');
