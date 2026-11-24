@@ -1,29 +1,101 @@
 <!DOCTYPE html>
-<html><head><title>Login - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<html>
+<head>
+<title>Login - FarmerCart</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Login</span></div></header>
+
+<header>
+  <div class="logo" onclick="location.href='index.html'">🌾 FarmerCart<span>Direct From Farmer</span></div>
+  <div class="search-box">
+    <input id="searchInput" placeholder="Search Seeds, Fertilizer...">
+    <button onclick="location.href='available.html'">🔍</button>
+  </div>
+  <select class="lang-small"><option>English</option><option>हिन्दी</option></select>
+  <button class="head-btn" onclick="location.href='login.html'">Login</button>
+  <button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cartCount">0</span>)</button>
+</header>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="available.html">All Products</a>
+  <a href="seeds.html">Seeds</a>
+  <a href="fertilizer.html">Fertilizer</a>
+  <a href="pesticides.html">Pesticide</a>
+  <a href="fresh-crops.html">Fresh Crops</a>
+  <a href="grocery.html">Grocery</a>
+  <a href="crop.html">Crop Info</a>
+  <a href="farmer-register.html">Become Seller</a>
+  <a href="farmernew.html">Farmer Products</a>
+  <a href="orders.html">My Orders</a>
+  <a href="help.html">Help</a>
+</nav>
+
 <main style="max-width:900px">
 <div style="display:flex;gap:0;background:white;border-radius:12px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.08)">
-<div style="flex:1;background:#2e7d32;color:white;padding:30px"><h2>Login</h2><p style="margin-top:10px;opacity:0.9">Get access to your Orders, Cart, and Seller Dashboard.</p><br><p>✅ Buyer Login: Any buyer can login</p><p>✅ Seller Login: Only Owner can login</p><p>✅ Order goes directly to Owner for confirmation</p></div>
+<div style="flex:1;background:#2e7d32;color:white;padding:30px">
+  <h2>Welcome to FarmerCart</h2>
+  <p style="margin-top:10px;opacity:0.9">Direct from farmer. Fresh crops, seeds & fertilizer at best price.</p>
+  <br><p>✅ No Account Needed</p>
+  <p>✅ Cash on Delivery Available</p>
+  <p>✅ Free Delivery Above ₹499</p>
+  <br>
+  <p style="font-size:12px;opacity:0.8">This is a Student Project for learning.</p>
+</div>
 <div style="flex:1.2;padding:28px">
-<h3>Login With Email</h3>
-<label>Email Address *</label><input id="loginEmail" placeholder="e.g. buyer@gmail.com">
-<label>Password *</label><input id="loginPass" type="password" placeholder="Enter password">
-<br><button class="btn btn-buy" style="width:100%;padding:14px" onclick="doLogin()">LOGIN →</button>
-<p style="margin-top:10px;font-size:12px;color:#666">Demo Buyer: Any email + Password: <b>1234</b><br>Demo Seller: Email: <b>owner@farmercart.com</b> + Password: <b>owner123</b></p>
-<div class="card" style="background:#f8f9fa;margin-top:16px"><b>How To Login As Seller?</b><p>Use Owner Email: <b>owner@farmercart.com</b> and Password: <b>owner123</b> → Seller Dashboard will open. If you use any other email, Buyer Dashboard will open, Seller Dashboard will not open.</p></div>
-<button class="btn-outline" onclick="location.href='index.html'">Continue as Guest - Start Shopping</button>
+  <h3>Continue With Mobile Number</h3>
+  <p style="font-size:13px;color:#666;margin:6px 0 14px">We will send a 4-digit code on your mobile.</p>
+
+  <label>Mobile Number *</label>
+  <input id="loginMobile" placeholder="e.g. 9876543210" maxlength="10" inputmode="numeric">
+
+  <div id="otpBox" style="display:none">
+    <label>Enter Code *</label>
+    <input id="loginOtp" placeholder="Enter 1234" maxlength="4" inputmode="numeric">
+    <p style="font-size:12px;color:#666"> Code is <b>1234</b> for this student project.</p>
+  </div>
+
+  <button class="btn btn-buy" style="width:100%;padding:14px" id="mainBtn" onclick="sendCode()">Send Code →</button>
+
+  <p style="margin-top:10px;font-size:12px;color:#666">Seller : Use Mobile <b>9876543210</b> to open Seller Dashboard.<br>Buyer : Use any other 10-digit Mobile Number.</p>
+
+  <hr style="margin:16px 0;border:none;border-top:1px solid #eee">
+  <button class="btn-outline" style="width:100%" onclick="location.href='index.html'">Continue as Guest - Start Shopping</button>
 </div>
 </div>
 </main>
+
+<footer><b>FarmerCart |  Student Project</b><br>Direct From Farmer | COD / UPI Available</footer>
+
 <script>
-function doLogin(){
-let em=document.getElementById('loginEmail').value.trim(); let pw=document.getElementById('loginPass').value.trim();
-if(!em){alert('Please enter email!'); return;}
-if(em=='owner@farmercart.com' && pw=='123'){localStorage.setItem('fc_user','owner'); alert('Welcome  Seller Dashboard is opening. You are the only seller.'); location.href='farmernew.html';}
-else if(pw=='1234'){localStorage.setItem('fc_user',em); alert('Login Successful! Welcome Buyer. Start shopping.'); location.href='index.html';}
-else{alert('Wrong password! Buyer Demo Password is 1234. Seller Password is 123.');}
+function sendCode(){
+  let mob = document.getElementById('loginMobile').value.trim();
+  if(mob.length !== 10){ alert('Please enter 10-digit mobile number'); return; }
+  document.getElementById('otpBox').style.display = 'block';
+  document.getElementById('mainBtn').innerText = 'Verify & Continue →';
+  document.getElementById('mainBtn').setAttribute('onclick','verifyCode()');
+  alert(' Code sent: 1234');
 }
+function verifyCode(){
+  let mob = document.getElementById('loginMobile').value.trim();
+  let otp = document.getElementById('loginOtp').value.trim();
+  if(otp !== '1234'){ alert('Wrong code! code is 1234'); return; }
+  if(mob === '9876543210'){
+    localStorage.setItem('fc_user','owner');
+    alert('Welcome Seller Dashboard is opening.');
+    location.href = 'index.html';
+  } else {
+    localStorage.setItem('fc_user', mob);
+    alert('Welcome! Start shopping.');
+    location.href = 'index.html';
+  }
+}
+function updateCartCount(){
+  let cart = JSON.parse(localStorage.getItem('fc_cart') || '[]');
+  let n = cart.reduce((a,b)=>a+b.qty,0);
+  document.getElementById('cartCount').innerText = n;
+}
+updateCartCount();
 </script>
-<footer><b>FarmerCart | Login Secure</b></footer>
-</body></html>
+</body>
+</html>
