@@ -1,29 +1,123 @@
 <!DOCTYPE html>
-<html><head><title>Help - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<html>
+<head>
+<title>Help - FarmerCart</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Help</span></div><button class="head-btn" onclick="location.href='index.html'">Home</button></header>
-<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a></nav>
+
+<header>
+  <div class="logo" onclick="location.href='index.html'">🌾 FarmerCart<span>Direct From Farmer</span></div>
+  <div class="search-box">
+    <input id="searchInput" placeholder="Search Help, Order, Delivery..." onkeyup="searchHelp()">
+    <button onclick="searchHelp()">🔍</button>
+  </div>
+  <select class="lang-small" onchange="alert('Language feature coming soon')">
+    <option>English</option>
+    <option>हिन्दी</option>
+  </select>
+  <button class="head-btn" onclick="location.href='login.html'">Login</button>
+  <button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cartCount">0</span>)</button>
+</header>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="available.html">All Products</a>
+  <a href="seeds.html">Seeds</a>
+  <a href="fertilizer.html">Fertilizer</a>
+  <a href="pesticides.html">Pesticide</a>
+  <a href="fresh-crops.html">Fresh Crops</a>
+  <a href="grocery.html">Grocery</a>
+  <a href="crop.html">Crop Info</a>
+  <a href="farmer-register.html">Become Seller</a>
+  <a href="farmernew.html">Farmer Products</a>
+  <a href="orders.html">My Orders</a>
+  <a href="help.html" class="active">Help</a>
+</nav>
+
 <main>
-<h2>Help & Support - FarmerCart</h2>
-<div class="card"><h3>How To Order?</h3><p>1. Select product → Add To Cart<br>2. Go to Cart → Place Order<br>3. Fill address → Place Order<br>4. Track in My Orders</p></div>
-<div class="card"><h3>Payment Options</h3><p>COD, UPI, Card - All available. COD is most popular.</p></div>
-<div class="card"><h3>Delivery Time</h3><p>2-3 days for Seeds, Fertilizer, Pesticides. Same day / Next day for Fresh Crops. Free delivery above ₹499.</p></div>
-<div class="card"><h3>Return Policy</h3><p>If product is damaged or wrong, you will get replacement or refund within 7 days.</p></div>
+  <div class="section-title"><span>Help & Contact</span><span style="font-size:13px">We Reply Within 2 Hours</span></div>
+
+  <div class="card">
+    <h3 style="color:#1b5e20">📞 Contact Us Directly</h3>
+    <div class="row" style="margin-top:12px">
+      <div>
+        <label>Call / WhatsApp</label>
+        <p><span class="phone-box">📞 9876543210</span></p>
+        <p style="font-size:13px;color:#666;margin-top:6px">9 AM - 9 PM, All 7 Days</p>
+        <br>
+        <button class="btn" onclick="window.open('https://wa.me/919876543210?text=Hello FarmerCart, I need help','_blank')">💬 WhatsApp Us</button>
+        <button class="btn btn-buy" onclick="location.href='tel:9876543210'">📞 Call Now</button>
+      </div>
+      <div>
+        <label>Email</label>
+        <p><b>support@farmercart.in</b></p>
+        <p style="font-size:13px;color:#666;margin-top:6px">For order, payment and return issues</p>
+        <br>
+        <label>Address</label>
+        <p style="font-size:14px">FarmerCart, Greater Noida,<br>Uttar Pradesh - 201310</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-title"><span>❓ Frequently Asked Questions</span></div>
+  <div id="faqList">
+    <div class="cat-faq"><b>Q: My order is not delivered yet. What to do?</b><p>A: Go to My Orders page and check tracking. If it shows Shipped for more than 4 days, call us on 9876543210.</p></div>
+    <div class="cat-faq"><b>Q: How to pay? Is COD available?</b><p>A: Yes, COD (Cash on Delivery), UPI and Card - all 3 are available. You can pay after receiving the product.</p></div>
+    <div class="cat-faq"><b>Q: Return Policy?</b><p>A: 7 Days Easy Return on Damaged Products. Take a photo of the damaged product and WhatsApp us.</p></div>
+    <div class="cat-faq"><b>Q: Delivery Time?</b><p>A: Delivery within 2-4 days in your village / city. Free Delivery above ₹499.</p></div>
+    <div class="cat-faq"><b>Q: How to become a seller / farmer?</b><p>A: Click on Become Seller, fill Name, Mobile Number and Village. Then you can add your own products.</p></div>
+    <div class="cat-faq"><b>Q: Is fertilizer / seed original?</b><p>A: Yes, 100% Original, Company sealed packing. If duplicate, full money will be refunded.</p></div>
+    <div class="cat-faq"><b>Q: Can I talk to farmer directly?</b><p>A: Yes, every product has the farmer's number below it. You can call or WhatsApp directly.</p></div>
+    <div class="cat-faq"><b>Q: How to track my order?</b><p>A: Go to My Orders page - Ordered → Packed → Shipped → Out for Delivery → Delivered, every step is visible.</p></div>
+  </div>
+
+  <div class="section-title"><span>✉️ Send Us A Message</span></div>
+  <div class="card">
+    <div class="row">
+      <div><label>Your Name</label><input id="hname" placeholder="Enter your name"></div>
+      <div><label>Mobile Number</label><input id="hphone" placeholder="10-digit mobile number"></div>
+    </div>
+    <label>Your Problem / Question</label>
+    <textarea id="hmsg" rows="4" placeholder="Write your problem here - Example: My order #1234 is not delivered yet"></textarea>
+    <br>
+    <button class="btn-blue" onclick="sendHelp()">Send Message on WhatsApp →</button>
+    <p style="font-size:12px;color:#888;margin-top:8px">Your message will open in WhatsApp. We reply within 2 hours (9 AM - 9 PM).</p>
+  </div>
+
+  <div class="card" style="text-align:center">
+    <h3 style="color:#1b5e20">Still Need Help?</h3>
+    <p style="margin:8px 0;color:#666">Our team is available 9 AM - 9 PM</p>
+    <button class="btn" onclick="location.href='available.html'">🛒 Continue Shopping</button>
+    <button class="btn btn-buy" onclick="location.href='orders.html'">📦 Track My Order</button>
+  </div>
 </main>
-<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
-</body></html>
-<!DOCTYPE html>
-<html><head><title>How It Works - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
-<body>
-<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>How It Works</span></div><button class="head-btn" onclick="location.href='index.html'">Home</button></header>
-<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a></nav>
-<main>
-<h2>How FarmerCart Works - Like Flipkart</h2>
-<div class="card"><b>Step 1: Browse</b><p>Select category - Seeds, Fertilizer, Pesticides, Fresh Crops, Grocery.</p></div>
-<div class="card"><b>Step 2: Add To Cart</b><p>Click ADD TO CART (Yellow) or BUY NOW (Green).</p></div>
-<div class="card"><b>Step 3: Checkout</b><p>Fill address, select COD / UPI / Card, Place Order.</p></div>
-<div class="card"><b>Step 4: Track</b><p>Go to My Orders, track Ordered → Packed → Shipped → Delivered.</p></div>
-<div class="card"><b>Step 5: Seller Dashboard</b><p> login with owner@farmercart.com, add products, update order status.</p></div>
-</main>
-<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
-</body></html>
+
+<footer><b>FarmerCart | Seller Only: FarmerCart</b><br>Direct From Farmer | COD / UPI Available | Free Delivery Above ₹499</footer>
+
+<script>
+function searchHelp(){
+  let q = (document.getElementById('searchInput').value || '').toLowerCase();
+  let faqs = document.querySelectorAll('#faqList .cat-faq');
+  faqs.forEach(f => {
+    let txt = f.innerText.toLowerCase();
+    f.style.display = txt.includes(q) ? 'block' : 'none';
+  });
+  if(q) document.getElementById('faqList').scrollIntoView({behavior:'smooth'});
+}
+function sendHelp(){
+  let name = document.getElementById('hname').value;
+  let phone = document.getElementById('hphone').value;
+  let msg = document.getElementById('hmsg').value;
+  if(!name || !msg){ alert('Please enter your name and message'); return; }
+  let text = 'Hello FarmerCart,%0AName: ' + encodeURIComponent(name) + '%0APhone: ' + encodeURIComponent(phone) + '%0AProblem: ' + encodeURIComponent(msg);
+  window.open('https://wa.me/919876543210?text=' + text, '_blank');
+}
+function updateCartCount(){
+  let cart = JSON.parse(localStorage.getItem('fc_cart') || '[]');
+  let n = cart.reduce((a,b)=>a+b.qty,0);
+  document.getElementById('cartCount').innerText = n;
+}
+updateCartCount();
+</script>
+</body>
+</html>

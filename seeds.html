@@ -1,22 +1,95 @@
 <!DOCTYPE html>
-<html><head><title>Seeds - FarmerCart</title><link rel="stylesheet" href="style.css"></head>
+<html>
+<head>
+<title>Seeds - FarmerCart</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Fresh • Seeds • Fertilizer ★</span></div><div class="search-box"><input id="s" placeholder="Search Seeds..." onkeyup="render()"><button onclick="render()">🔍</button></div><select class="lang-small"><option>🌐 EN</option><option>Hindi</option></select><button class="head-btn" onclick="location.href='login.html'">Login</button><button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cc">0</span>)</button></header>
-<nav><a href="index.html">Home</a><a href="available.html">All Products</a><a href="seeds.html" class="active">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a><a href="orders.html">My Orders</a></nav>
+
+<header>
+  <div class="logo" onclick="location.href='index.html'">🌾 FarmerCart<span>Direct From Farmer</span></div>
+  <div class="search-box">
+    <input id="searchInput" placeholder="Search Seeds, Tomato, Wheat, Paddy..." onkeyup="render()">
+    <button onclick="render()">🔍</button>
+  </div>
+  <select class="lang-small" onchange="alert('Language feature coming soon')">
+    <option>English</option>
+    <option>हिन्दी</option>
+  </select>
+  <button class="head-btn" onclick="location.href='login.html'">Login</button>
+  <button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cartCount">0</span>)</button>
+</header>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="available.html">All Products</a>
+  <a href="seeds.html" class="active">Seeds</a>
+  <a href="fertilizer.html">Fertilizer</a>
+  <a href="pesticides.html">Pesticide</a>
+  <a href="fresh-crops.html">Fresh Crops</a>
+  <a href="grocery.html">Grocery</a>
+  <a href="crop.html">Crop Info</a>
+  <a href="farmer-register.html">Become Seller</a>
+  <a href="farmernew.html">Farmer Products</a>
+  <a href="orders.html">My Orders</a>
+  <a href="help.html">Help</a>
+</nav>
+
 <main>
-<div class="cat-hero"><h2>🌱 Seeds - Best Quality Seeds</h2><p>Hybrid, High Yield, Certified Seeds. 90%+ Germination Guarantee. Tomato, Wheat, Paddy, Onion, Chilli - Everything in one place.</p><span>★ Seller Only: FarmerCart | Free Delivery Above ₹499</span></div>
-<div class="cat-stats"><div><b>18+</b> Seeds Available</div><div><b>4.6★</b> Average Rating</div><div><b>2,500+</b> Farmers Bought</div><div><b>COD</b> Available</div></div>
-<div class="cat-filter"><input placeholder="Search seeds..." onkeyup="document.getElementById('s').value=this.value;render()"><select id="sort" onchange="render()"><option value="">Sort: Popularity</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select><select id="price" onchange="render()"><option value="">All Prices</option><option value="0-150">Under ₹150</option><option value="150-300">₹150 - ₹300</option><option value="300-1000">Above ₹300</option></select><button class="btn-blue" onclick="location.href='cart.html'">Go to Cart →</button></div>
-<div class="cat-grid" id="list"></div>
-<div class="section-title">🌱 Seeds Buying Guide</div>
-<div class="cat-info"><h3>Which Seed To Sow And When?</h3><p style="line-height:1.9;margin-top:8px"><b>1. Tomato Seeds:</b> Sow from Oct to Feb, fruit comes in 60 days.<br><b>2. Wheat Seeds HD 2967:</b> Sow in Nov, harvest in April. 40kg seed is needed for 1 acre.<br><b>3. Paddy:</b> Nursery in June-July, transplant in July-Aug.<br><b>4. Onion Seeds:</b> Sow in Oct-Nov, harvest in May.<br><b>5. Chilli Seeds:</b> Can be sown all year, give more water in summer.</p></div>
-<div class="section-title">⭐ Farmer Reviews</div>
-<div class="cat-review"><b>Ramesh Kumar - Malihabad ★★★★★</b><p>"Bought Tomato Hybrid seed, 90% germination. Yield doubled. FarmerCart seed is genuine."</p></div>
-<div class="cat-review"><b>Sunita Devi ★★★★★</b><p>"Bought Wheat HD 2967, grain was heavy. Delivery arrived in 2 days, bought on COD."</p></div>
-<div class="section-title">❓ Seeds FAQs</div>
-<div class="cat-faq"><b>Q: What if seed does not germinate?</b><p>A: 90% germination guarantee. Send a photo, you will get a replacement.</p></div>
-<div class="cat-faq"><b>Q: How much seed is needed for 1 acre?</b><p>A: Wheat - 40kg, Paddy - 12kg, Tomato - 100g, Onion - 500g. Written on every packet.</p></div>
+  <div class="cat-hero">
+    <h2>🌱 Seeds - Best Quality Seeds</h2>
+    <p>Hybrid, High Yield, Certified Seeds. 90%+ Germination Guarantee. Tomato, Wheat, Paddy, Onion, Chilli - Everything in one place.</p>
+    <span>★ Seller Only: FarmerCart | Free Delivery Above ₹499</span>
+  </div>
+
+  <div class="cat-stats">
+    <div><b>50</b> Seeds Available</div>
+    <div><b>4.6★</b> Average Rating</div>
+    <div><b>2,500+</b> Farmers Bought</div>
+    <div><b>COD</b> Available</div>
+  </div>
+
+  <div class="cat-filter">
+    <input id="searchInput2" placeholder="Search seeds..." onkeyup="document.getElementById('searchInput').value=this.value;render()">
+    <select id="sort" onchange="render()">
+      <option value="">Sort: Popularity</option>
+      <option value="low">Price: Low to High</option>
+      <option value="high">Price: High to Low</option>
+    </select>
+    <select id="price" onchange="render()">
+      <option value="">All Prices</option>
+      <option value="0-150">Under ₹150</option>
+      <option value="150-300">₹150 - ₹300</option>
+      <option value="300-1000">Above ₹300</option>
+    </select>
+    <button class="btn-blue" onclick="location.href='cart.html'">Go to Cart →</button>
+  </div>
+
+  <div class="section-title"><span>All Seeds - 50 Products</span><span id="count" style="font-size:13px"></span></div>
+  <div class="cat-grid" id="list"></div>
+
+  <div class="section-title"><span>🌱 Seeds Buying Guide</span></div>
+  <div class="cat-info">
+    <h3>Which Seed To Sow And When?</h3>
+    <p style="line-height:1.9;margin-top:8px">
+    <b>1. Tomato Seeds:</b> Sow from Oct to Feb, fruit comes in 60 days.<br>
+    <b>2. Wheat Seeds HD 2967:</b> Sow in Nov, harvest in April. 40kg seed is needed for 1 acre.<br>
+    <b>3. Paddy:</b> Nursery in June-July, transplant in July-Aug.<br>
+    <b>4. Onion Seeds:</b> Sow in Oct-Nov, harvest in May.<br>
+    <b>5. Chilli Seeds:</b> Can be sown all year, give more water in summer.
+    </p>
+  </div>
+
+  <div class="section-title"><span>⭐ Farmer Reviews</span></div>
+  <div class="cat-review"><b>Ramesh Kumar - Malihabad ★★★★★</b><p>"Bought Tomato Hybrid seed, 90% germination. Yield doubled. FarmerCart seed is genuine."</p></div>
+  <div class="cat-review"><b>Sunita Devi ★★★★★</b><p>"Bought Wheat HD 2967, grain was heavy. Delivery arrived in 2 days, bought on COD."</p></div>
+
+  <div class="section-title"><span>❓ Seeds FAQs</span></div>
+  <div class="cat-faq"><b>Q: What if seed does not germinate?</b><p>A: 90% germination guarantee. Send a photo, you will get a replacement.</p></div>
+  <div class="cat-faq"><b>Q: How much seed is needed for 1 acre?</b><p>A: Wheat - 40kg, Paddy - 12kg, Tomato - 100g, Onion - 500g. Written on every packet.</p></div>
 </main>
+
+<footer><b>FarmerCart | Seller Only: FarmerCart</b><br>Direct From Farmer | COD / UPI Available | Free Delivery Above ₹499</footer>
+
 <script>
 let all=[
 {id:101,name:'Tomato Seeds - Hybrid (100g)',price:149,old:249,rating:'4.6',emoji:'🍅',stock:'In Stock',desc:'Hybrid, 90% germination, 60 days to fruit',tag:'BESTSELLER'},
@@ -36,12 +109,84 @@ let all=[
 {id:115,name:'Bottle Gourd Seeds (100g)',price:99,old:149,rating:'4.3',emoji:'🥒',stock:'In Stock',desc:'Long bottle gourd',tag:''},
 {id:116,name:'Bitter Gourd Seeds (100g)',price:119,old:179,rating:'4.4',emoji:'🥒',stock:'In Stock',desc:'Bitter gourd',tag:''},
 {id:117,name:'Pumpkin Seeds (100g)',price:109,old:169,rating:'4.5',emoji:'🎃',stock:'In Stock',desc:'Big pumpkin',tag:''},
-{id:118,name:'Maize Seeds (2kg)',price:299,old:399,rating:'4.6',emoji:'🌽',stock:'In Stock',desc:'Hybrid maize, full grain',tag:'NEW'}
+{id:118,name:'Maize Seeds (2kg)',price:299,old:399,rating:'4.6',emoji:'🌽',stock:'In Stock',desc:'Hybrid maize, full grain',tag:'NEW'},
+{id:119,name:'Potato Seeds (10kg)',price:449,old:649,rating:'4.5',emoji:'🥔',stock:'In Stock',desc:'Disease free potato seed',tag:''},
+{id:120,name:'Cucumber Seeds (100g)',price:119,old:179,rating:'4.6',emoji:'🥒',stock:'In Stock',desc:'Long cucumber, crispy',tag:''},
+{id:121,name:'Ridge Gourd Seeds (100g)',price:129,old:189,rating:'4.5',emoji:'🥒',stock:'In Stock',desc:'Soft ridge gourd',tag:''},
+{id:122,name:'Radish Seeds (200g)',price:89,old:129,rating:'4.6',emoji:'🥕',stock:'In Stock',desc:'White radish, fast growth',tag:''},
+{id:123,name:'Beetroot Seeds (200g)',price:109,old:159,rating:'4.6',emoji:'🫜',stock:'In Stock',desc:'Red beetroot',tag:''},
+{id:124,name:'Turnip Seeds (200g)',price:99,old:149,rating:'4.5',emoji:'🥕',stock:'In Stock',desc:'Sweet turnip',tag:''},
+{id:125,name:'Capsicum Seeds (100g)',price:179,old:259,rating:'4.7',emoji:'🫑',stock:'In Stock',desc:'Green capsicum, thick',tag:'NEW'},
+{id:126,name:'Garlic Seeds (1kg)',price:299,old:429,rating:'4.6',emoji:'🧄',stock:'In Stock',desc:'Big garlic cloves',tag:''},
+{id:127,name:'Ginger Seeds (1kg)',price:249,old:349,rating:'4.6',emoji:'🫚',stock:'In Stock',desc:'Fresh ginger seed',tag:''},
+{id:128,name:'Turmeric Seeds (1kg)',price:279,old:399,rating:'4.6',emoji:'🫚',stock:'In Stock',desc:'High curcumin turmeric',tag:''},
+{id:129,name:'Methi Seeds (500g)',price:79,old:129,rating:'4.7',emoji:'🌿',stock:'In Stock',desc:'Green methi, fast',tag:''},
+{id:130,name:'Cumin Seeds (500g)',price:349,old:499,rating:'4.7',emoji:'🌿',stock:'In Stock',desc:'Fragrant jeera',tag:''},
+{id:131,name:'Fennel Seeds (500g)',price:199,old:299,rating:'4.5',emoji:'🌿',stock:'In Stock',desc:'Sweet fennel',tag:''},
+{id:132,name:'Ajwain Seeds (500g)',price:179,old:259,rating:'4.5',emoji:'🌿',stock:'In Stock',desc:'Desi ajwain',tag:''},
+{id:133,name:'Bajra Seeds (5kg)',price:299,old:429,rating:'4.5',emoji:'🌾',stock:'In Stock',desc:'Hybrid bajra',tag:''},
+{id:134,name:'Jowar Seeds (5kg)',price:279,old:399,rating:'4.5',emoji:'🌾',stock:'In Stock',desc:'Hybrid jowar',tag:''},
+{id:135,name:'Soybean Seeds (5kg)',price:549,old:799,rating:'4.6',emoji:'🫘',stock:'In Stock',desc:'High protein soybean',tag:''},
+{id:136,name:'Groundnut Seeds (5kg)',price:599,old:849,rating:'4.7',emoji:'🥜',stock:'In Stock',desc:'Bold groundnut',tag:''},
+{id:137,name:'Sunflower Seeds (1kg)',price:349,old:499,rating:'4.6',emoji:'🌻',stock:'In Stock',desc:'Hybrid sunflower',tag:'NEW'},
+{id:138,name:'Cotton Seeds (2kg)',price:899,old:1299,rating:'4.8',emoji:'☁️',stock:'In Stock',desc:'BT cotton, high yield',tag:'BESTSELLER'},
+{id:139,name:'Sugarcane Seeds (10kg)',price:799,old:1099,rating:'4.5',emoji:'🎋',stock:'In Stock',desc:'Sweet sugarcane',tag:''},
+{id:140,name:'Beans Seeds (500g)',price:179,old:259,rating:'4.5',emoji:'🫘',stock:'In Stock',desc:'Green beans',tag:''},
+{id:141,name:'Okra Seeds Extra (500g)',price:149,old:219,rating:'4.6',emoji:'🥒',stock:'In Stock',desc:'Extra soft okra',tag:''},
+{id:142,name:'Watermelon Seeds (100g)',price:159,old:229,rating:'4.7',emoji:'🍉',stock:'In Stock',desc:'Sweet watermelon',tag:'NEW'},
+{id:143,name:'Muskmelon Seeds (100g)',price:149,old:219,rating:'4.6',emoji:'🍈',stock:'In Stock',desc:'Sweet muskmelon',tag:''},
+{id:144,name:'Papaya Seeds (100g)',price:199,old:299,rating:'4.7',emoji:'🧡',stock:'In Stock',desc:'Red lady papaya',tag:'NEW'},
+{id:145,name:'Barley Seeds (5kg)',price:329,old:479,rating:'4.5',emoji:'🌾',stock:'In Stock',desc:'Malting barley',tag:''},
+{id:146,name:'Oats Seeds (5kg)',price:399,old:549,rating:'4.6',emoji:'🌾',stock:'In Stock',desc:'Fodder oats',tag:''},
+{id:147,name:'Gram Seeds (5kg)',price:499,old:699,rating:'4.6',emoji:'🫘',stock:'In Stock',desc:'Desi chana',tag:''},
+{id:148,name:'Arhar Dal Seeds (2kg)',price:399,old:549,rating:'4.5',emoji:'🫘',stock:'In Stock',desc:'Red arhar',tag:''},
+{id:149,name:'Moong Dal Seeds (2kg)',price:349,old:499,rating:'4.6',emoji:'🫘',stock:'In Stock',desc:'Green moong',tag:''},
+{id:150,name:'Masoor Seeds (2kg)',price:329,old:469,rating:'4.5',emoji:'🫘',stock:'In Stock',desc:'Red masoor',tag:''}
 ];
-function render(){let q=(document.getElementById('s').value||'').toLowerCase(); let sort=document.getElementById('sort').value; let pr=document.getElementById('price').value; let list=all.filter(p=>p.name.toLowerCase().includes(q) && (!pr || (pr=='0-150'&&p.price<=150) || (pr=='150-300'&&p.price>150&&p.price<=300) || (pr=='300-1000'&&p.price>300))); if(sort=='low') list.sort((a,b)=>a.price-b.price); if(sort=='high') list.sort((a,b)=>b.price-a.price); document.getElementById('list').innerHTML=list.map(p=>{let off=Math.round((1-p.price/p.old)*100); return `<div class="cat-card">${p.tag?`<span class="tag">${p.tag}</span>`:''}<div class="cat-emoji">${p.emoji}</div><span class="cat-badge">Seeds • ${p.stock}</span><h4 style="margin:8px 0">${p.name}</h4><p class="cat-desc">${p.desc}</p><p><span class="p-rating">${p.rating} ★</span> 2,500+ Ratings</p><p class="p-price">₹${p.price} <span class="p-old">₹${p.old}</span> <span class="p-off">${off}% off</span></p><p class="p-delivery">FREE Delivery • COD Available</p><p class="phone-box">Seller: FarmerCart</p><br><button class="btn" onclick="add(${p.id})">ADD TO CART</button><button class="btn btn-buy" onclick="buy(${p.id})">BUY NOW</button></div>`}).join('');}
-function add(id){let cart=JSON.parse(localStorage.getItem('fc_cart')||'[]'); let p=all.find(x=>x.id==id); let ex=cart.find(x=>x.id==id); if(ex) ex.qty++; else cart.push({...p,cat:'Seed',qty:1}); localStorage.setItem('fc_cart',JSON.stringify(cart)); document.getElementById('cc').innerText=cart.length; alert(p.name+' added to cart!');}
-function buy(id){add(id); location.href='cart.html';}
-render(); document.getElementById('cc').innerText=JSON.parse(localStorage.getItem('fc_cart')||'[]').length;
+
+function render(){
+  let q = (document.getElementById('searchInput').value || '').toLowerCase();
+  let sort = document.getElementById('sort').value;
+  let pr = document.getElementById('price').value;
+  let list = all.filter(p => p.name.toLowerCase().includes(q) && (!pr || (pr=='0-150' && p.price<=150) || (pr=='150-300' && p.price>150 && p.price<=300) || (pr=='300-1000' && p.price>300)));
+  if(sort=='low') list.sort((a,b)=>a.price-b.price);
+  if(sort=='high') list.sort((a,b)=>b.price-a.price);
+  document.getElementById('count').innerText = list.length + ' Products Found';
+  document.getElementById('list').innerHTML = list.map(p=>{
+    let off = Math.round((1 - p.price/p.old)*100);
+    return `<div class="cat-card">
+      ${p.tag ? `<span class="tag">${p.tag}</span>` : ''}
+      <div class="cat-emoji">${p.emoji}</div>
+      <span class="cat-badge">Seeds • ${p.stock}</span>
+      <h4 style="margin:8px 0">${p.name}</h4>
+      <p class="cat-desc">${p.desc}</p>
+      <p><span class="p-rating">${p.rating} ★</span> <span style="font-size:12px;color:#888">2,500+ Ratings</span></p>
+      <p class="p-price">₹${p.price} <span class="p-old">₹${p.old}</span> <span class="p-off">${off}% off</span></p>
+      <p class="p-delivery">FREE Delivery • COD Available</p>
+      <p style="margin-top:6px"><span class="phone-box">Seller: FarmerCart • 📞 9876543210</span></p>
+      <button class="btn" onclick="add(${p.id})">ADD TO CART</button>
+      <button class="btn btn-buy" onclick="buy(${p.id})">BUY NOW</button>
+    </div>`;
+  }).join('');
+}
+
+function add(id){
+  let cart = JSON.parse(localStorage.getItem('fc_cart') || '[]');
+  let p = all.find(x=>x.id==id);
+  let ex = cart.find(x=>x.id==id);
+  if(ex) ex.qty++; else cart.push({...p, cat:'Seed', qty:1, phone:'9876543210'});
+  localStorage.setItem('fc_cart', JSON.stringify(cart));
+  updateCartCount();
+  alert(p.name + ' added to cart!');
+}
+function buy(id){ add(id); location.href='cart.html'; }
+function updateCartCount(){
+  let cart = JSON.parse(localStorage.getItem('fc_cart') || '[]');
+  let n = cart.reduce((a,b)=>a+b.qty,0);
+  document.getElementById('cartCount').innerText = n;
+}
+render();
+updateCartCount();
 </script>
-<footer><b>FarmerCart | Seller Only: FarmerCart</b></footer>
-</body></html>
+</body>
+</html>

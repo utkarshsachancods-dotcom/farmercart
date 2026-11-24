@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html><head><title>FarmerCart - Seeds, Fertilizer, Pesticides & Fresh Crops</title><link rel="stylesheet" href="style.css"></head>
 <body>
+
 <header><div class="logo" onclick="location.href='index.html'">FarmerCart<span>Fresh • Seeds • Fertilizer ★</span></div><div class="search-box"><input id="homeSearch" placeholder="Search for Seeds, Fertilizer, Pesticide, Mango, Tomato..." onkeyup="if(event.key=='Enter') searchHome()"><button onclick="searchHome()">🔍</button></div><select class="lang-small"><option>🌐 EN</option><option>Hindi</option><option>Bengali</option><option>Telugu</option><option>Tamil</option><option>Marathi</option></select><button class="head-btn" onclick="location.href='farmer-register.html'">👨‍🌾 Become Seller</button><button class="head-btn" onclick="location.href='login.html'">Login</button><button class="head-cart" onclick="location.href='cart.html'">🛒 Cart (<span id="cartCount">0</span>)</button><button class="head-cart" onclick="location.href='orders.html'">My Orders</button></header>
-<nav><a href="index.html" class="active">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a><a href="orders.html">My Orders</a><a href="farmer-register.html" style="color:#ff9800">👨‍🌾 Sell On FarmerCart</a></nav>
+<nav><a href="index.html" class="active">Home</a><a href="available.html">All Products</a><a href="seeds.html">Seeds</a><a href="fertilizer.html">Fertilizer</a><a href="pesticides.html">Pesticides</a><a href="fresh-crops.html">Fresh Crops</a><a href="grocery.html">Grocery</a><a href="orders.html">My Orders</a><a href="farmer-register.html" style="color:#ff9800">👨‍🌾 Sell On FarmerCart</a>  <a href="help.html" class="active">Help</a></nav>
+
+
 <main>
+
 <div class="banner"><h2>FarmerCart Big Sale - Up to 45% Off</h2><p>Seeds • Fertilizer • Pesticides • Fresh Crops - Direct From Farmer. Free Delivery Above ₹499.</p><br><button class="btn btn-buy" onclick="location.href='available.html'">SHOP NOW →</button><button class="btn" onclick="location.href='farmer-register.html'">👨‍🌾 Register As Farmer Seller</button></div>
 <div class="section-title"><span>Top Categories</span><span style="color:#2e7d32;font-size:13px;cursor:pointer" onclick="location.href='available.html'">VIEW ALL →</span></div>
 <div class="grid">
@@ -17,10 +21,12 @@
 <div class="section-title"><span>Deals of the Day - Direct From Farmer</span><span style="color:#2e7d32;font-size:13px">GRAB OR GONE</span></div>
 <div class="grid" id="homeGrid"></div>
 <div class="section-title"><span>Why FarmerCart?</span></div>
-<div class="card"><b>1. Direct From Farmer Seller:</b><p>Ab har product ke neeche farmer ka naam aur number hoga. Aap direct call / WhatsApp karke price, quantity aur delivery ki baat kar sakte ho.</p></div>
-<div class="card"><b>2. Farmer Can Register As Seller:</b><p>Koi bhi farmer apna naam, mobile, gaon daal ke seller ban sakta hai aur apna product add kar sakta hai.</p></div>
-<div class="card"><b>3. Tracking Like Flipkart:</b><p>Ordered → Packed → Shipped → Out for Delivery → Delivered. Every step is visible in My Orders.</p></div>
-<div class="card"><b>4. COD / UPI / Card + Direct Contact:</b><p>Chaaho to Cart se order karo, chaaho to direct farmer ko Call / WhatsApp karo.</p></div>
+<div class="features">
+  <div class="card"><b>1. Direct From Farmer Seller</b><p>Every product will have the farmer's number below it. You can directly call or WhatsApp to discuss the price, quantity, and delivery.</p></div>
+  <div class="card"><b>2. Farmer Can Register As Seller</b><p>Any farmer can register as a seller by entering their name, mobile number, and village, and add their own products.</p></div>
+  <div class="card"><b>3. Live Tracking </b><p>Ordered → Packed → Shipped → Out for Delivery → Delivered. Every step is visible in Orders.</p></div>
+  <div class="card"><b>4. COD / UPI / Card + Direct Contact</b><p>Order through the cart if you want, or call/WhatsApp the farmer directly if you prefer.</p></div>
+</div>
 </main>
 <script>
 let products = JSON.parse(localStorage.getItem('fc_products')||'null') || [
